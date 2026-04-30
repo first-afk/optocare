@@ -2,6 +2,7 @@ import { Inter, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
         <ClerkProvider appearance={{ variables: { colorPrimary: "#00328a" } }}>
           <Navbar />
           {children}
+          <Footer />
         </ClerkProvider>
       </body>
     </html>

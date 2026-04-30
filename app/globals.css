@@ -254,10 +254,23 @@ body,
    UTILITY CLASSES
    ===================================================== */
 
+@layer components {
+  .navbar {
+    @apply flex items-center justify-between bg-surface mx-auto w-full px-14 py-4 max-sm:px-4;
+  }
+  .hero-section {
+    @apply grid w-full h-125;
 
-@layer components{
-  .navbar{
-    @apply flex items-center justify-between bg-surface mx-auto w-full px-14 py-4 max-sm:px-4
+    .image-wrapper {
+      @apply relative w-full h-full;
+      grid-area: 1/1;
+    }
+    .text-wrapper {
+      @apply p-[2em] text-white relative;
+      background-color: #040e25a8;
+      
+      grid-area: 1/1;
+    }
   }
 }
 /* Flexbox Utilities */
@@ -447,8 +460,8 @@ body,
 .bg-surface-variant {
   background-color: var(--surface-variant);
 }
-.rounded-base{
-  border-radius: var(--rounded-base)
+.rounded-base {
+  border-radius: var(--rounded-base);
 }
 
 /* SurfaceCard Utilities */

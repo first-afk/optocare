@@ -1,8 +1,21 @@
 import React from 'react'
+import Hero from './components/Hero'
+import Dashboard from './components/Dashboard'
+import About from './components/About'
 
 const page = () => {
   return (
-    <div></div>
+    <main className=' bg-surface'>
+      <section className='h-[50vh]'>
+        <Hero />
+      </section>
+      <section className='section-spacing'>
+        <Dashboard />
+      </section>
+      <section>
+        <About />
+      </section>
+    </main>
   )
 }
 

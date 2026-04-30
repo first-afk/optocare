@@ -14,6 +14,8 @@ const Navbar = () => {
 
         <div className="flex items-center gap-8">
             <NavItems />
+        </div>
+        <div>
              <Show when="signed-out">
               <SignInButton />
             </Show>

@@ -1,6 +1,7 @@
-'use client';
+
+import { auth, currentUser } from '@clerk/nextjs/server';
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+
 import React from 'react'
 const navItems = [
     {label: 'Home', href: '/'},
@@ -8,8 +9,9 @@ const navItems = [
     {label: 'News', href: '/news'},
 ]
 
-const NavItems = () =>{
-    const pathname = usePathname
+const NavItems = async () =>{
+    const {userId} = await auth();
+    const user = await currentUser();
     return (
         <nav className='flex items-center gap-5'>
             {navItems.map(({label, href}) =>(
@@ -17,6 +19,11 @@ const NavItems = () =>{
                     {label}
                 </Link>
             ))}
+            {user?.publicMetadata.role === 'admin' ?
+            <div>
+                <Link href='/admin'>Admin</Link>
+            </div> : ""
+            }
         </nav>
     )
 }

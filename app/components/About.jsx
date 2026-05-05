@@ -1,17 +1,18 @@
 import Image from "next/image";
+import aboutImage from './../../public/images/about_image.png'
 import React from "react";
 
 const About = () => {
   return (
-    <div className="p-5 mx-3 md:flex md:flex-row flex-col-center">
-      <div className="relative w-full h-full size-[72px]">
+    <div className=" about-section">
+      <div className="relative w-full h-full size-10">
         <Image
-          src="/images/about_image.png"
-          alt="hero image"
+          src={aboutImage}
+          alt="about image"
           fill
           sizes="100vw"
           loading="lazy"
-          className="object-cover"
+          className="object-cover rounded-lg shadow-amber-300"
         />
       </div>
       <div>

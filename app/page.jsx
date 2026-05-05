@@ -5,14 +5,14 @@ import About from './components/About'
 
 const page = () => {
   return (
-    <main className=' bg-surface'>
+    <main className=' bg-surface-dim'>
       <section className='h-[50vh]'>
         <Hero />
       </section>
       <section className='section-spacing'>
         <Dashboard />
       </section>
-      <section>
+      <section className='section-spacing'>
         <About />
       </section>
     </main>

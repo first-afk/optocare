@@ -14,7 +14,7 @@ const Button = ({
 }) => {
   const baseClass = "relative font-medium rounded-md transition-colors";
   const variants = {
-    primary: "bg-[#00328a] text-primary hover:bg-opacity-90 cursor-pointer transition-all ",
+    primary: "bg-primary text-primary hover:bg-opacity-90 cursor-pointer transition-all ",
     secondary: "bg-neutral-600 text-primary hover:bg-opacity-90 cursor-pointer transition-all ",
     outline: "border border-white cursor-pointer transition-all ",
   };

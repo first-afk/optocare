@@ -3,7 +3,7 @@ import DashboardCard from "./DashboardCard";
 
 const Dashboard = () => {
   return (
-    <section className="mt-50 py-5 relative">
+    <section className="mt-40 md:mt-50 py-5 relative">
       <div className="py-3 mx-3">
       <h1 className="text-4xl font-bold">Professional Dashboard</h1>
       <p className="text-sm font-medium text-tertiary py-2">Your central hub for practice management and professional growth.</p>

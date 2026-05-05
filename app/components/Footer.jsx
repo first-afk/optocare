@@ -11,7 +11,7 @@ const footerItems = [
 
 const Footer = () => {
   return (
-    <footer aria-label="footer" className="border-t border-t-primary flex md:flex-row md:justify-between md:items-start flex-col-reverse items-center text-xs capitalize gap-5 p-10 bg-surface">
+    <footer aria-label="footer" className="border-t border-t-primary flex md:flex-row md:justify-between md:items-start flex-col-reverse items-center text-xs capitalize gap-5 p-10 bg-surface-dim">
 
       <div className="flex flex-row gap-3 items-center">
           <Link href="/">

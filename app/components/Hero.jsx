@@ -29,7 +29,7 @@ const Hero = () => {
         {heroItems.map(({ id, header, subheader, subtext }) => (
           <div key={id} className="flex-col-center text-center mt-20">
             <h1 className="capitalize font-bold">{header}</h1>
-            <h2 className="text-5xl font-bold capitalize py-5">{subheader}</h2>
+            <h2 className="heading-h1 capitalize">{subheader}</h2>
             <p className="text-lg py-4 md:w-2/3">{subtext}</p>
           </div>
         ))}

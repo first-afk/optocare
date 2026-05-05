@@ -33,7 +33,7 @@
   --on-primary-fixed-variant: #003ea6;
 
   /* Secondary Colors */
-  --secondary: #705d00;
+  --secondary: #e9c400;
   --secondary-rgb: 112, 93, 0;
   --on-secondary: #ffffff;
   --secondary-container: #fcd400;
@@ -141,9 +141,9 @@
     --surface-variant: #49474e;
 
     /* Primary Colors (adjusted for dark) */
-    --primary: #b3c5ff;
+    --primary: #00328a;
     --primary-rgb: 179, 197, 255;
-    --on-primary: #002362;
+    --on-primary: #ffffff;
     --primary-container: #004ba6;
     --on-primary-container: #dbe1ff;
     --primary-fixed: #dbe1ff;
@@ -254,25 +254,7 @@ body,
    UTILITY CLASSES
    ===================================================== */
 
-@layer components {
-  .navbar {
-    @apply flex items-center justify-between bg-surface mx-auto w-full px-14 py-4 max-sm:px-4;
-  }
-  .hero-section {
-    @apply grid w-full h-125;
 
-    .image-wrapper {
-      @apply relative w-full h-full;
-      grid-area: 1/1;
-    }
-    .text-wrapper {
-      @apply p-[2em] text-white relative;
-      background-color: #040e25a8;
-      
-      grid-area: 1/1;
-    }
-  }
-}
 /* Flexbox Utilities */
 .flex-center {
   @apply flex items-center justify-center;
@@ -460,6 +442,9 @@ body,
 .bg-surface-variant {
   background-color: var(--surface-variant);
 }
+.bg-surface-dim{
+  background-color: var(--surface-dim) ;
+}
 .rounded-base {
   border-radius: var(--rounded-base);
 }
@@ -495,4 +480,59 @@ body,
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+@layer components {
+  .navbar {
+    @apply flex items-center justify-between mx-auto w-full px-14 py-4 max-sm:px-4;
+  }
+  .hero-section {
+    @apply grid w-full h-125;
+
+    .image-wrapper {
+      @apply relative w-full h-full;
+      grid-area: 1/1;
+    }
+    .text-wrapper {
+      @apply p-[2em] text-white relative;
+      background-color: #040e25a8;
+      grid-area: 1/1;
+    }
+  }
+  .about-section{
+    @apply w-full h-100 p-5 mx-3 flex flex-col md:flex-row justify-between gap-10
+  }
+  .job-section{
+    display: grid;
+    grid-template-areas: 
+    "filter title"
+    "filter job-grid";
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 80px 1fr;
+    min-height: 100vh;
+
+    @media (max-width: 768px) {
+      grid-template-areas: 
+      "filter filter"
+      "title title"
+      "job-grid job-grid";
+      grid-template-rows: 100px 100px 1fr;
+    }
+
+    .filter{
+      grid-area: filter;
+      
+    }
+    .job-grid{
+      grid-area: job-grid;
+      
+    }
+    .title{
+      grid-area: title;
+      background-color: red;
+    }
+  }
+  .listBox{
+
+  }
 }

@@ -2,7 +2,13 @@ import React from 'react'
 
 const jobsPage = () => {
   return (
-    <div>jobsPage</div>
+    <section className='job-section'>
+      <aside className='filter'>
+        
+      </aside>
+      <div className='title'></div>
+      <div className='job-grid'></div>
+    </section>
   )
 }
 

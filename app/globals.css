@@ -254,7 +254,6 @@ body,
    UTILITY CLASSES
    ===================================================== */
 
-
 /* Flexbox Utilities */
 .flex-center {
   @apply flex items-center justify-center;
@@ -411,6 +410,9 @@ body,
 .text-secondary {
   color: var(--secondary);
 }
+.text-on-secondary {
+  color: var(--on-secondary-fixed);
+}
 
 .text-tertiary {
   color: var(--tertiary);
@@ -442,8 +444,8 @@ body,
 .bg-surface-variant {
   background-color: var(--surface-variant);
 }
-.bg-surface-dim{
-  background-color: var(--surface-dim) ;
+.bg-surface-dim {
+  background-color: var(--surface-dim);
 }
 .rounded-base {
   border-radius: var(--rounded-base);
@@ -460,11 +462,11 @@ body,
 
 /* Button-like Utilities */
 .btn-primary {
-  @apply bg-primary text-primary px-6 py-3  font-semibold cursor-pointer transition-all hover:bg-primary;
+  @apply bg-primary text-primary px-6 py-3 font-semibold cursor-pointer transition-all hover:bg-primary;
 }
 
 .btn-secondary {
-  @apply bg-secondary text-secondary px-6 py-3  font-semibold cursor-pointer transition-all hover:opacity-90;
+  @apply bg-secondary h-10 w-18 md:w-25 font-semibold cursor-pointer transition-all hover:opacity-90 rounded-md;
 }
 
 .btn-outline {
@@ -484,10 +486,10 @@ body,
 
 @layer components {
   .navbar {
-    @apply flex items-center justify-between mx-auto w-full px-14 py-4 max-sm:px-4;
+    @apply flex items-center justify-between mx-auto w-full px-14 py-4 max-sm:px-4 drop-shadow-lg shadow-gray-500;
   }
   .hero-section {
-    @apply grid w-full h-125;
+    @apply grid w-full h-screen;
 
     .image-wrapper {
       @apply relative w-full h-full;
@@ -499,40 +501,53 @@ body,
       grid-area: 1/1;
     }
   }
-  .about-section{
-    @apply w-full h-100 p-5 mx-3 flex flex-col md:flex-row justify-between gap-10
+  .about-section {
+    @apply w-full h-screen p-5 mx-1 md:mx-3 flex flex-col md:flex-row justify-between gap-10;
   }
-  .job-section{
+  .job-section {
     display: grid;
-    grid-template-areas: 
-    "filter title"
-    "filter job-grid";
+    grid-template-areas:
+      "filter title"
+      "filter job-grid";
     grid-template-columns: 300px 1fr;
     grid-template-rows: 80px 1fr;
     min-height: 100vh;
 
     @media (max-width: 768px) {
-      grid-template-areas: 
-      "filter filter"
-      "title title"
-      "job-grid job-grid";
+      grid-template-areas:
+        "filter filter"
+        "title title"
+        "job-grid job-grid";
       grid-template-rows: 100px 100px 1fr;
     }
 
-    .filter{
+    .filter {
       grid-area: filter;
-      
     }
-    .job-grid{
+    .job-grid {
       grid-area: job-grid;
-      
     }
-    .title{
+    .title {
       grid-area: title;
       background-color: red;
     }
   }
-  .listBox{
-
+  .listbox {
+    @apply h-10 w-full border-b border-b-tertiary;
+  }
+  .select {
+    @apply flex flex-row gap-5 w-full;
+  }
+  .select__trigger {
+    @apply rounded-2xl;
+  }
+  .select__value {
+    @apply w-full flex-2 mr-3;
+  }
+  .select__indicator {
+    @apply mr-2 mt-1;
+  }
+  .select__popover {
+    @apply rounded-xl bg-neutral-950 p-2 w-full max-w-xs;
   }
 }

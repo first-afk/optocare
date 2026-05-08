@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
-// import { Check } from "@gravity-ui/icons";
-import {z} from "zod"
+
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 import {
   Button,
-  Description,
-  Dropdown,
   FieldError,
   Form,
   Input,
@@ -15,25 +14,205 @@ import {
   Select,
   ListBox,
 } from "@heroui/react";
+import { Controller, useForm } from "react-hook-form";
+import { createJob } from "@/lib/actions/jobs.actions";
+import { redirect } from "next/navigation";
+
+const formSchema = z.object({
+  job: z.string().min(1, { error: "Job title is required" }),
+  clinic: z.string().min(1, { error: "Clinic name is required" }),
+  description: z.string().min(1, { error: "Job description is required" }),
+  type: z.string().min(1, { error: "Job type is required" }),
+  range: z.string().min(1, { error: "Salary range is required" }),
+});
+
+const jobType = [
+  { id: 1, type: "Full Time" },
+  { id: 2, type: "Hybrid" },
+  { id: 3, type: "Part Time" },
+];
+const salaryRange = [
+  { id: 1, range: "₦50,000 - ₦199,000" },
+  { id: 2, range: "₦200,000 - ₦499,000" },
+  { id: 3, range: "₦500,000 & above" },
+];
 
 const JobForm = () => {
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = {};
-    // Convert FormData to plain object
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
+  const { handleSubmit, control } = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      job: "",
+      clinic: "",
+      description: "",
+      type: "",
+      range: "",
+    },
+  });
+  const onSubmit = async (values) => {
+    const job = await createJob(values);
+    if (job) {
+      toast.success("Job has been created!");
+      console.log("Submitted", values);
+      redirect(`/jobs/${job.id}`);
+    } else {
+      console.log("failed to create companion");
+      redirect("/");
+    }
+  };
+  const onError = (errors) => {
+    toast.error("An error occured", {
+      error: errors,
     });
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
   };
 
   return (
     <Form
+      onSubmit={handleSubmit(onSubmit, onError)}
       className="flex flex-col gap-4 justify-center items-center w-full max-w-lg space-y-3 rounded-lg  bg-surface p-4"
-      onSubmit={onSubmit}
     >
-      <TextField
+      <Controller
+        name="job"
+        control={control}
+        render={({ field }) => (
+          <TextField
+            isRequired
+            name="job_title"
+            type="text"
+            id="job_title"
+            className="text-sm font-medium flex flex-col gap-3 w-full max-w-md"
+          >
+            <Label htmlFor="job-title">Job Title</Label>
+            <Input
+              className="p-2 rounded-md border border/60"
+              placeholder="What's the job title?"
+              {...field}
+            />
+            <FieldError />
+          </TextField>
+        )}
+      />
+      <Controller
+        name="clinic"
+        control={control}
+        render={({ field }) => (
+          <TextField
+            isRequired
+            name="clinic_name"
+            type="text"
+            id="clinic_name"
+            className="text-sm font-medium flex flex-col gap-3 w-full max-w-md"
+          >
+            <Label htmlFor="job-title">Clinic Name</Label>
+            <Input
+              className="p-2 rounded-md border border/60"
+              placeholder="What's the name of clinic?"
+              {...field}
+            />
+            <FieldError />
+          </TextField>
+        )}
+      />
+
+      <div className="flex flex-col justify-between w-full max-w-md gap-4">
+        <Controller
+          name="type"
+          control={control}
+          render={({ field }) => (
+            <Select
+              placeholder="Select job type"
+              onChange={field.onChange}
+              value={field.value}
+              defaultValue={field.value}
+              selectedKeys={field.value ? [field.value] : []}
+            >
+              <Label>Job Type</Label>
+              <Select.Trigger className="rounded-lg border bg-surface p-2 flex">
+                <Select.Value />
+                <Select.Indicator />
+              </Select.Trigger>
+              <Select.Popover placement="bottom left">
+                <ListBox>
+                  {jobType.map(({ type }) => (
+                    <ListBox.Item
+                      key={type}
+                      id={type}
+                      textValue={type}
+                      className="hover:bg-gray-500/60 rounded-2xl border-0 outline-none p-2"
+                    >
+                      <Label>{type}</Label>
+                    </ListBox.Item>
+                  ))}
+                </ListBox>
+              </Select.Popover>
+            </Select>
+          )}
+        />
+        <Controller
+          name="range"
+          control={control}
+          render={({ field }) => (
+            <Select
+              placeholder="Select salary range"
+              onChange={field.onChange}
+              value={field.value}
+              defaultValue={field.value}
+              selectedKeys={field.value ? [field.value] : []}
+            >
+              <Label>Salary Range</Label>
+              <Select.Trigger className="rounded-lg border bg-surface p-2 flex">
+                <Select.Value />
+                <Select.Indicator />
+              </Select.Trigger>
+              <Select.Popover placement="bottom left">
+                <ListBox>
+                  {salaryRange.map(({ range }) => (
+                    <ListBox.Item
+                      key={range}
+                      id={range}
+                      textValue={range}
+                      className="hover:bg-gray-500/60 rounded-2xl border-0 outline-none p-2"
+                    >
+                      <Label>{range}</Label>
+                    </ListBox.Item>
+                  ))}
+                </ListBox>
+              </Select.Popover>
+            </Select>
+          )}
+        />
+      </div>
+
+      <Controller
+        name="description"
+        control={control}
+        render={({ field }) => (
+          <div className="flex flex-col gap-2 w-full max-w-md">
+            <Label htmlFor="job-summary">Job Summary</Label>
+            <TextArea
+              {...field}
+              id="job-summary"
+              className="rounded-lg border border-border/70 bg-surface px-4 py-3 text-sm leading-6 shadow-sm"
+              placeholder="What's the job about?"
+              rows={5}
+              style={{ resize: "vertical" }}
+            />
+          </div>
+        )}
+      />
+      <div className="w-full max-w-md">
+        <Button
+          type="submit"
+          className="bg-primary p-3 rounded-lg text-white w-full cursor-pointer"
+        >
+          Submit
+        </Button>
+      </div>
+    </Form>
+  );
+};
+
+/* 
+  <TextField
         isRequired
         name="job-title"
         type="text"
@@ -62,52 +241,84 @@ const JobForm = () => {
         <FieldError />
       </TextField>
 
-      <div className="flex justify-between w-full max-w-md">
-         <Select className="w-1/2 bg-pink-500" placeholder="Select one">
-      <Label>State</Label>
-      <Select.Trigger>
-        <Select.Value />
-        <Select.Indicator />
-      </Select.Trigger>
-      <Select.Popover className='bg-red-600 w-full max-w-40'>
-        <ListBox>
-          <ListBox.Item id="florida" textValue="Florida" className="listbox">
-            Florida
-            <ListBox.ItemIndicator />
-          </ListBox.Item>
-          <ListBox.Item id="delaware" textValue="Delaware" className="listbox">
-            Delaware
-            <ListBox.ItemIndicator />
-          </ListBox.Item>
-          <ListBox.Item id="california" textValue="California" className="listbox">
-            California
-            <ListBox.ItemIndicator />
-          </ListBox.Item>
-          <ListBox.Item id="texas" textValue="Texas" className="listbox">
-            Texas
-            <ListBox.ItemIndicator />
-          </ListBox.Item>
-          
-        </ListBox>
-      </Select.Popover>
-    </Select>
+      <div className="flex flex-col justify-between w-full max-w-md gap-4">
+        <div className="flex gap-4 items-center">
+          <Label>Job Type</Label>
+          <Select aria-labelledby="job-type" className="w-2/3 flex flex-col">
+            <Select.Trigger className="rounded-lg border bg-surface flex items-center  p-2">
+              <Select.Value />
+              <Select.Indicator />
+            </Select.Trigger>
+            <Select.Popover>
+              <ListBox>
+                {jobType.map(({ id, type }) => (
+                  <ListBox.Item
+                    key={id}
+                    id={id}
+                    textValue={type}
+                    className="hover:bg-surface-secondary"
+                  >
+                    {type}
+                  </ListBox.Item>
+                ))}
+              </ListBox>
+            </Select.Popover>
+          </Select>
+        </div>
+        <div className="flex gap-4 items-center">
+          <Label>Salary Range</Label>
+          <Select aria-labelledby="salary-type" className="w-2/3 flex flex-col">
+            <Select.Trigger className="rounded-lg border bg-surface p-2 flex">
+              <Select.Value />
+              <Select.Indicator />
+            </Select.Trigger>
+            <Select.Popover>
+              <ListBox>
+                {salaryRange.map(({ id, range }) => (
+                  <ListBox.Item
+                    key={id}
+                    id={id}
+                    textValue={range}
+                    className="hover:bg-surface-secondary"
+                  >
+                    <Label>{range}</Label>
+                  </ListBox.Item>
+                ))}
+              </ListBox>
+            </Select.Popover>
+          </Select>
+        </div>
 
-        <Dropdown>
-          <Dropdown.Trigger className="rounded-lg border p-2 bg-surface w-1/3">
-            <Button>Salary Range</Button>
-          </Dropdown.Trigger>
-          <Dropdown.Popover className="min-w-50">
-            <Dropdown.Menu>
-              <Dropdown.Item
-                id="item-1"
-                textValue="Item 1"
-                className="hover:bg-surface-secondary"
-              >
-                Item 1
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown.Popover>
-        </Dropdown>
+        <Controller
+          name="user"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label="Pick a User"
+              onChange={field.onChange}
+              selectedKeys={field.value ? [field.value] : []}
+            >
+              <Select.Trigger className="rounded-lg border bg-surface p-2 flex">
+              <Select.Value />
+              <Select.Indicator />
+            </Select.Trigger>
+            <Select.Popover>
+              <ListBox>
+                {salaryRange.map(({ id, range }) => (
+                  <ListBox.Item
+                    key={id}
+                    id={id}
+                    textValue={range}
+                    className="hover:bg-surface-secondary"
+                  >
+                    <Label>{range}</Label>
+                  </ListBox.Item>
+                ))}
+              </ListBox>
+            </Select.Popover>
+            </Select>
+          )}
+        />
       </div>
 
       <div className="flex flex-col gap-2 w-full max-w-md">
@@ -121,18 +332,7 @@ const JobForm = () => {
         />
       </div>
 
-
-      <div className="w-full max-w-md">
-        <Button
-          type="submit"
-          className="bg-primary p-3 rounded-lg text-white w-full cursor-pointer"
-        >
-          {/* <Check /> */}
-          Submit
-        </Button>
-      </div>
-    </Form>
-  );
-};
+      
+*/
 
 export default JobForm;

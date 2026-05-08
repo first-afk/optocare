@@ -17,7 +17,7 @@ const DashboardCard = ({
   };
 
   return (
-    <article className={`m-3 md:h-56 border-2 border-[#c3c6d6] bg-surface rounded-lg ${className}`}>
+    <article className={`m-3 md:h-56 bg-white drop-shadow-xl shadow-gray-900 rounded-lg ${className}`}>
       {(topic || description) && (
           <div className=" md:w-3/4">
             <div

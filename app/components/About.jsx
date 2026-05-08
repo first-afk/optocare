@@ -1,21 +1,21 @@
 import Image from "next/image";
-import aboutImage from './../../public/images/about_image.png'
+import aboutImage from "./../../public/images/about_image.png";
 import React from "react";
 
 const About = () => {
   return (
     <div className=" about-section">
-      <div className="relative w-full h-full size-10">
+      <div className="relative w-full md:w-1/2 h-full size-10">
         <Image
           src={aboutImage}
           alt="about image"
           fill
           sizes="100vw"
           loading="lazy"
-          className="object-cover rounded-lg shadow-amber-300"
+          className="object-cover rounded-lg shadow-2xl shadow-amber-300"
         />
       </div>
-      <div>
+      <div className="md:w-1/2">
         <h1 className="text-sm text-primary font-bold">About Optivision</h1>
         <h2 className="text-2xl font-bold capitalize">
           Setting the standard for eye care excellence.

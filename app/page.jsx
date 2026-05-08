@@ -5,7 +5,7 @@ import About from './components/About'
 
 const page = () => {
   return (
-    <main className=' bg-surface-dim'>
+    <main className='bg-surface'>
       <section className='h-[50vh]'>
         <Hero />
       </section>

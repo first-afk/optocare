@@ -447,6 +447,10 @@ body,
 .bg-surface-dim {
   background-color: var(--surface-dim);
 }
+.bg-surface-white{
+  background-color: var(--surface-container-lowest);
+  color: var(--on-surface-variant);
+}
 .rounded-base {
   border-radius: var(--rounded-base);
 }

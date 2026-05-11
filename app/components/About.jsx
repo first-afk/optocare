@@ -12,7 +12,7 @@ const About = () => {
           fill
           sizes="100vw"
           loading="lazy"
-          className="object-cover rounded-lg shadow-2xl shadow-amber-300"
+          className="object-cover rounded-lg shadow-md shadow-secondary"
         />
       </div>
       <div className="md:w-1/2">

@@ -17,7 +17,7 @@ const DashboardCard = ({
   };
 
   return (
-    <article className={`m-3 md:h-56 bg-white drop-shadow-xl shadow-gray-900 rounded-lg ${className}`}>
+    <article className={`m-3 md:h-56 bg-surface-white drop-shadow-xl shadow-gray-900 rounded-lg ${className}`}>
       {(topic || description) && (
           <div className=" md:w-3/4">
             <div
@@ -33,7 +33,7 @@ const DashboardCard = ({
             </div>
             <div className="flex flex-col gap-3 mx-5 py-5">
               <h1 className="text-2xl font-bold capitalize">{topic}</h1>
-              <p className="text-sm text-[#737685] font-medium">{description}</p>
+              <p className="text-sm font-medium">{description}</p>
             </div>
             {children}
           </div>

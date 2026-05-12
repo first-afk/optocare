@@ -447,7 +447,7 @@ body,
 .bg-surface-dim {
   background-color: var(--surface-dim);
 }
-.bg-surface-white{
+.bg-surface-white {
   background-color: var(--surface-container-lowest);
   color: var(--on-surface-variant);
 }
@@ -533,7 +533,7 @@ body,
     }
     .title {
       grid-area: title;
-      background-color: red;
+      background-color: #fff;
     }
   }
   .listbox {

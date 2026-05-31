@@ -9,10 +9,10 @@ const page = () => {
       <section className='h-[50vh]'>
         <Hero />
       </section>
-      <section className='section-spacing'>
+      <section className='pb-20 pt-20'>
         <Dashboard />
       </section>
-      <section className='section-spacing'>
+      <section className='pb-20'>
         <About />
       </section>
     </main>

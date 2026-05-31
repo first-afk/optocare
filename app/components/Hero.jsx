@@ -22,15 +22,15 @@ const Hero = () => {
           fill
           sizes="100vw"
           loading="lazy"
-          className="object-cover"
+          className="object-cover rounded-b-xl"
         />
       </div>
-      <div className="flex-col-center text-wrapper justify-center items-center">
+      <div className="flex flex-col text-wrapper justify-center items-center">
         {heroItems.map(({ id, header, subheader, subtext }) => (
-          <div key={id} className="flex-col-center text-center mt-20">
-            <h1 className="capitalize font-bold">{header}</h1>
-            <h2 className="heading-h1 capitalize">{subheader}</h2>
-            <p className="text-lg py-4 md:w-2/3">{subtext}</p>
+          <div key={id} className="flex flex-col text-center mt-15">
+            <h1 className="capitalize font-semibold text-xl mb-4">{header}</h1>
+            <h2 className="text-3xl font-bold capitalize">{subheader}</h2>
+            <p className="text-sm py-5 md:w-2/3 text-center">{subtext}</p>
           </div>
         ))}
         <div className="space-x-7">

@@ -12,15 +12,15 @@ const NavItems = async () => {
   const { userId } = await auth();
   const user = await currentUser();
   return (
-    <nav className="flex items-center gap-5">
+    <nav className="flex items-center gap-5 p-3">
       {navItems.map(({ label, href }) => (
-        <Link href={href} key={label}>
+        <Link className="font-semibold" href={href} key={label}>
           {label}
         </Link>
       ))}
       {user?.publicMetadata.role === "admin" ? (
         <div>
-          <Link href="/admin">Admin</Link>
+          <Link className="font-semibold" href="/admin">Admin</Link>
         </div>
       ) : (
         ""

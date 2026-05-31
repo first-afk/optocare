@@ -3,28 +3,28 @@ import DashboardCard from "./DashboardCard";
 
 const Dashboard = () => {
   return (
-    <section className="relative mt-[50vh]">
+    <section className="relative mt-[50vh] p-5">
       <div className="flex justify-center py-5 mx-3">
-        <h1 className="text-sm text-pretty text-center font-medium py-2 heading-h3 capitalize">
-          Your central hub for practice management and professional growth.
+        <h1 className="text-pretty text-center py-2 text-xl font-bold capitalize">
+          Your <span className="border-b-2 border-b-secondary"> central </span>  hub for practice management and <span className="border-b-2 border-b-secondary">professional  </span> growth.
         </h1>
       </div>
 
-      <div className="flex-center md:flex-row flex-wrap">
+      <div className="flex items-center justify-center md:flex-row flex-wrap">
         <DashboardCard
           topic="Find Your Next Career"
           description="Access listings for clinical positions, specialised fellowships, and practice partnership opportunities nationwide"
           variant="primary"
           icon="job"
           className="max-w-full lg:w-1/2 lg:grow"
-        ></DashboardCard>
+        />
         <DashboardCard
           topic="Latest industry news"
           description="FDA approves new revolutionary treatment for advanced macular degeneration"
           variant="secondary"
           icon="news"
           className="w-full lg:w-1/3"
-        ></DashboardCard>
+        />
 
         <DashboardCard
           topic="Clinical resources"
@@ -32,14 +32,14 @@ const Dashboard = () => {
           variant="tertiary"
           icon="resources"
           className="w-full lg:w-1/3"
-        ></DashboardCard>
+        />
         <DashboardCard
           topic="Member Community"
           description="Join peers in discussing clinical cases, practice management strategies, and industry trends"
           variant="primary"
           icon="community"
           className="w-full lg:w-1/2 lg:grow "
-        ></DashboardCard>
+        />
       </div>
     </section>
   );

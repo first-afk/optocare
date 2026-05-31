@@ -4,7 +4,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className=" about-section">
+    <div className="about-section">
       <div className="relative w-full md:w-1/2 h-full size-10">
         <Image
           src={aboutImage}
@@ -32,7 +32,7 @@ const About = () => {
           can focus on what matters most: clear vision.
         </p>
         <div className="flex py-3">
-          <div className="border-l-2 border-l-primary text-primary w-1/2 p-2">
+          <div className="border-l-2 border-l-blue-700 w-1/2 p-2">
             <p className="text-2xl font-black">15k+</p>
             <p className="text-sm">Active members</p>
           </div>

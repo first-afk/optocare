@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body
-        className="min-h-full flex flex-col"
+        className="min-h-full grid "
         suppressHydrationWarning={true}
       >
         <ClerkProvider appearance={{ variables: { colorPrimary: "#00328a" } }}>

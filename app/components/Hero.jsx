@@ -27,7 +27,7 @@ const Hero = () => {
       </div>
       <div className="flex flex-col text-wrapper justify-center items-center">
         {heroItems.map(({ id, header, subheader, subtext }) => (
-          <div key={id} className="flex flex-col text-center mt-15">
+          <div key={id} className="flex flex-col justify-center items-center text-center mt-15">
             <h1 className="capitalize font-semibold text-xl mb-4">{header}</h1>
             <h2 className="text-3xl font-bold capitalize">{subheader}</h2>
             <p className="text-sm py-5 md:w-2/3 text-center">{subtext}</p>

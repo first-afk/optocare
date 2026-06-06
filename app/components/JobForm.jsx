@@ -68,7 +68,7 @@ const JobForm = () => {
   return (
     <Form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="flex flex-col gap-4 justify-center items-center w-full max-w-lg space-y-3 rounded-lg  bg-surface p-4"
+      className="flex flex-col gap-4 justify-center items-center w-full max-w-lg space-y-3 rounded-4xl border border-outline/70 bg-surface-gradient p-6 shadow-[0_30px_80px_rgba(37,99,235,0.12)] backdrop-blur-xl"
     >
       <Controller
         name="job"
@@ -83,7 +83,7 @@ const JobForm = () => {
           >
             <Label htmlFor="job-title">Job Title</Label>
             <Input
-              className="p-2 rounded-md border border/60"
+              className="p-3 rounded-2xl border border-outline/70 bg-white/85 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
               placeholder="What's the job title?"
               {...field}
             />
@@ -104,7 +104,7 @@ const JobForm = () => {
           >
             <Label htmlFor="job-title">Clinic Name</Label>
             <Input
-              className="p-2 rounded-md border border/60"
+              className="p-3 rounded-2xl border border-outline/70 bg-white/85 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
               placeholder="What's the name of clinic?"
               {...field}
             />
@@ -126,7 +126,7 @@ const JobForm = () => {
               selectedKeys={field.value ? [field.value] : []}
             >
               <Label>Job Type</Label>
-              <Select.Trigger className="rounded-lg border bg-surface p-2 flex">
+              <Select.Trigger className="rounded-2xl border border-outline/70 bg-white/85 p-3 flex items-center justify-between transition focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/15">
                 <Select.Value />
                 <Select.Indicator />
               </Select.Trigger>
@@ -159,7 +159,7 @@ const JobForm = () => {
               selectedKeys={field.value ? [field.value] : []}
             >
               <Label>Salary Range</Label>
-              <Select.Trigger className="rounded-lg border bg-surface p-2 flex">
+              <Select.Trigger className="rounded-2xl border border-outline/70 bg-white/85 p-3 flex items-center justify-between transition focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/15">
                 <Select.Value />
                 <Select.Indicator />
               </Select.Trigger>
@@ -191,7 +191,7 @@ const JobForm = () => {
             <TextArea
               {...field}
               id="job-summary"
-              className="rounded-lg border border-border/70 bg-surface px-4 py-3 text-sm leading-6 shadow-sm"
+              className="rounded-3xl border border-outline/70 bg-white/90 px-4 py-4 text-sm leading-6 shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
               placeholder="What's the job about?"
               rows={5}
               style={{ resize: "vertical" }}
@@ -202,7 +202,7 @@ const JobForm = () => {
       <div className="w-full max-w-md">
         <Button
           type="submit"
-          className="bg-primary p-3 rounded-lg text-white w-full cursor-pointer"
+          className="bg-primary p-3 rounded-2xl text-white w-full cursor-pointer shadow-lg shadow-primary/10 hover:bg-primary/95"
         >
           Submit
         </Button>

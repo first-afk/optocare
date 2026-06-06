@@ -9,36 +9,40 @@ const Button = ({
   type = "button",
   className = "",
   ariaLabel,
-  color = 'primary',
+  color = "primary",
   ...props
 }) => {
-  const baseClass = "relative font-medium rounded-md transition-colors";
+  const baseClass =
+    "relative font-semibold rounded-2xl transition-all duration-200 ease-out shadow-sm";
   const variants = {
-    primary: "bg-primary text-primary hover:bg-opacity-90 cursor-pointer transition-all ",
-    secondary: "bg-neutral-600 text-primary hover:bg-opacity-90 cursor-pointer transition-all ",
-    outline: "border border-white cursor-pointer transition-all ",
+    primary:
+      "bg-primary text-white hover:bg-primary/90 shadow-primary/20 hover:shadow-md cursor-pointer",
+    secondary:
+      "bg-secondary text-white hover:bg-secondary/95 shadow-secondary/20 hover:shadow-md cursor-pointer",
+    outline:
+      "border border-white/50 text-white hover:border-white/70 cursor-pointer",
   };
   const sizes = {
-    small: "px-2 py-1.5 text-sm",
-    medium: "px-4 py-2 text-md",
-    large: "px-6 py-3 text-lg",
+    small: "px-3 py-1.5 text-sm",
+    medium: "px-5 py-2.5 text-md",
+    large: "px-7 py-3.5 text-lg",
   };
 
   const disabledClass = disabled ? "opacity-50 cursor-not-allowed" : "";
   const finalClass = `${baseClass} ${variants[variant]} ${sizes[size]} ${disabledClass} ${className}`;
 
   return (
-    <>  
-        <button
-          type={type}
-          onClick={onClick}
-          disabled={disabled}
-          className={finalClass}
-          aria-label={ariaLabel}
-          {...props}
-        >
-          {children}
-        </button>
+    <>
+      <button
+        type={type}
+        onClick={onClick}
+        disabled={disabled}
+        className={finalClass}
+        aria-label={ariaLabel}
+        {...props}
+      >
+        {children}
+      </button>
     </>
   );
 };

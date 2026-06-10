@@ -227,7 +227,7 @@ body,
   color: var(--foreground);
 }
 .pill {
-  @apply inline-flex items-center rounded-2xl bg-slate-800/20 dark:bg-gray-500/10 px-3 py-2 text-sm font-medium dark:text-white inset-ring inset-ring-gray-800/50 dark:inset-ring-gray-400/20
+  @apply inline-flex items-center rounded-2xl bg-[#ebf3fd] dark:bg-gray-500/10 px-3 py-2 text-sm font-medium dark:text-white inset-ring inset-ring-outline/70 dark:inset-ring-gray-400/20
 }
 
 .job-card {

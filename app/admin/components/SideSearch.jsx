@@ -39,7 +39,7 @@ const SearchInput = () => {
   }, [searchQuery]);
 
   return (
-    <div className=" md:flex md:absolute md:top-0 md:left-0 md:bottom-0 md:w-74 md:flex-col md:rounded-none bg-surface px-4 py-3   relative rounded-2xl border border-primary/20  shadow-sm transition hover:border-primary/40 focus-within:border-primary/70">
+    <div className=" md:flex md:absolute md:top-0 md:left-0 md:bottom-0 md:w-74 md:flex-col md:rounded-md bg-surface px-4 py-3 relative rounded-2xl border border-slate-800/20 m-4 transition hover:border-primary/40 focus-within:border-primary/70">
       <div className="flex px-3 py-3 border border-outline/70 bg-surface rounded-2xl items-center">
         <Search />
         {job_type ? (

@@ -5,14 +5,14 @@ import About from './components/About'
 
 const page = () => {
   return (
-    <main className='bg-surface'>
+    <main className=''>
       <section className='h-[50vh]'>
         <Hero />
       </section>
-      <section className='pb-20 pt-20'>
+      <section className='pb-20 pt-20 dark:bg-surface bg-[#ebf3fd] shadow-lg'>
         <Dashboard />
       </section>
-      <section className='pb-20'>
+      <section className='pb-20 pt-20'>
         <About />
       </section>
     </main>

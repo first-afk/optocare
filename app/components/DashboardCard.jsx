@@ -18,7 +18,7 @@ const DashboardCard = ({
 
   return (
     <article
-      className={`m-3 md:h-56 dark:bg-slate-950 bg-surface border border-outline/70 shadow-[0_22px_60px_rgba(37,99,235,0.12)] rounded-[1.75rem] ${className}`}
+      className={`m-3 md:h-56 dark:bg-surface bg-surface border border-outline/70 dark:shadow-[0_22px_60px_rgba(37,99,235,0.12)] rounded-[1.75rem] ${className}`}
     >
       {(topic || description) && (
         <div className="md:w-3/4">

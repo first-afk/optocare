@@ -227,7 +227,7 @@ body,
   color: var(--foreground);
 }
 .pill {
-  @apply inline-flex items-center rounded-2xl bg-[#ebf3fd] dark:bg-gray-500/10 px-3 py-2 text-sm font-medium dark:text-white inset-ring inset-ring-outline/70 dark:inset-ring-gray-400/20
+  @apply inline-flex items-center rounded-2xl bg-[#ebf3fd] dark:bg-gray-500/10 px-3 py-2 text-sm font-medium dark:text-white inset-ring inset-ring-outline/70 dark:inset-ring-gray-400/20;
 }
 
 .job-card {
@@ -296,7 +296,7 @@ body,
     @apply h-10 w-full border-b border-b-tertiary;
   }
   .select {
-    @apply flex flex-row gap-5 w-full;
+    @apply flex flex-col gap-5 w-full capitalize;
   }
   .select__trigger {
     @apply rounded-2xl;

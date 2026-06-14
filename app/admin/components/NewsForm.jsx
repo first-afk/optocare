@@ -63,7 +63,7 @@ const NewsForm = () => {
   return (
     <Form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="flex flex-col gap-4 justify-center items-center w-full max-w-lg space-y-3 rounded-4xl border border-outline/70 bg-surface-gradient p-6 shadow-[0_30px_80px_rgba(37,99,235,0.12)] backdrop-blur-xl"
+      className="flex flex-col gap-4 justify-center items-center w-full max-w-lg space-y-3 rounded-4xl border border-outline/70 bg-surface p-6 shadow-[0_30px_80px_rgba(37,99,235,0.12)] backdrop-blur-xl"
     >
       <Controller
         name="title"
@@ -78,7 +78,7 @@ const NewsForm = () => {
           >
             <Label htmlFor="job-title">Article Title</Label>
             <Input
-              className="p-3 rounded-2xl border border-outline/70 bg-white/85 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
+              className="p-3 rounded-2xl dark:bg-surface border border-outline/70 bg-white/85 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
               placeholder="e.g., Breakthrough in Glaucoma Treatment"
               {...field}
             />
@@ -100,7 +100,7 @@ const NewsForm = () => {
             <Label className="text-sm font-medium flex flex-col gap-3">
               Category
             </Label>
-            <Select.Trigger className="rounded-2xl capitalize border border-outline/70 bg-white/85 p-3 flex items-center justify-between transition focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/15">
+            <Select.Trigger className="rounded-2xl capitalize border border-outline/70 dark:bg-surface bg-white/85 p-3 flex items-center justify-between transition focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/15">
               <Select.Value />
               <Select.Indicator />
             </Select.Trigger>
@@ -130,7 +130,7 @@ const NewsForm = () => {
             <TextArea
               {...field}
               id="content"
-              className="rounded-3xl border border-outline/70 bg-white/90 px-4 py-4 text-sm leading-6 shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
+              className="rounded-3xl border border-outline/70 dark:bg-surface bg-white/90 px-4 py-4 text-sm leading-6 shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
               placeholder="Write a brief overview of the article"
               rows={5}
               style={{ resize: "vertical" }}
@@ -153,7 +153,7 @@ const NewsForm = () => {
             <Label htmlFor="duration">Estimated Read Time (minutes)</Label>
             <Input
               type="number"
-              className="p-3 rounded-2xl border border-outline/70 bg-white/85 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
+              className="p-3 rounded-2xl border border-outline/70 dark:bg-surface bg-white/85 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
               placeholder="15"
               {...field}
             />

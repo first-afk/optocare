@@ -1,4 +1,5 @@
 import { formUrlQuery, removeKeysFromUrlQuery } from "@jsmastery/utils";
+import clsx from "clsx";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -34,17 +35,23 @@ const JobFilter = () => {
         Quick filters
       </h2>
       <div className="relative flex items-center gap-2 justify-center flex-wrap">
-        {filters.map((filter) => (
-          <button
-            key={filter}
-            type="button"
-            value={filter}
-            onClick={() => setSubject(filter)}
-            className="pill text-xs transition hover:bg-primary/10 cursor-pointer capitalize"
-          >
-            {filter}
-          </button>
-        ))}
+        {filters.map((filter) => {
+          const isActive = query === filter;
+          return (
+            <button
+              key={filter}
+              type="button"
+              value={filter}
+              onClick={() => setSubject(filter)}
+              className={clsx(
+                "px-4 py-2 transition-colors ",
+                isActive ? "pill active" : "pill",
+              )}
+            >
+              {filter}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
 import { getAllNews, getUniqueGenre } from "@/lib/actions/news.actions";
 import React from "react";
-import NewsCategory from "../components/NewsCategory";
+import NewsCategory from "./components/NewsCategory";
 import Image from "next/image";
 import { Timer } from "lucide-react";
+import Link from "next/link";
 
 const newsPage = async ({ searchParams }) => {
   const filters = await searchParams;
@@ -34,7 +35,7 @@ const newsPage = async ({ searchParams }) => {
       </div>
       <div className="news-body mx-3 mt-5">
         {spotlight ? (
-          <article className="news-spotlight flex max-md:flex-col min-h-[80vh] w-full mb-10 items-start justify-center max-md:bg-surface  rounded-t-2xl">
+          <article className="news-spotlight">
             <div className="relative md:w-2/3 w-full min-h-[80vh] flex justify-stretch">
               <Image
                 src="/images/optovision_hero.png"
@@ -45,23 +46,27 @@ const newsPage = async ({ searchParams }) => {
                 className="object-cover rounded-4xl p-3"
               />
             </div>
-            <div className="flex flex-col p-3 py-5 space-y-5 bg-surface md:border border-outline/70 shadow-lg rounded-2xl md:w-1/3 h-fit">
+            <div className="spotlight-content">
               <p className="news-genre-pill pill">{spotlight.genre}</p>
               <h2 className="heading-h3">{spotlight.title}</h2>
-              <p className="max-md:line-clamp-2">
+              <p className="max-md:line-clamp-2 text-sm">
                 {spotlight.content} Lorem ipsum dolor sit amet consectetur
                 adipisicing elit. Necessitatibus, quaerat temporibus! Corporis
                 nobis voluptate provident sint consequatur impedit laboriosam
                 aut optio dolores voluptatibus nulla possimus veniam doloremque
-                officiis, cum nam.
+                officiis, cum nam. Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit.
               </p>
-              <p className="flex items-center text-sm text-primary gap-1.5 font-semibold">
-                {" "}
-                <span>
-                  <Timer size={20} />
-                </span>{" "}
-                {spotlight.duration} min read
-              </p>
+              <div className="article-footer text-primary">
+                <p className="flex items-center gap-1.5">
+                  {" "}
+                  <span>
+                    <Timer size={20} />
+                  </span>{" "}
+                  {spotlight.duration} min read
+                </p>
+                <Link href={`/news/${spotlight.id}`}>View details</Link>
+              </div>
             </div>
           </article>
         ) : (
@@ -70,7 +75,7 @@ const newsPage = async ({ searchParams }) => {
           </article>
         )}
 
-        <div className="news-cards flex flex-row flex-wrap gap-5 md:flex-col max-md:justify-center ">
+        <div className="news-cards flex flex-row flex-wrap gap-5 md:flex-col max-md:justify-center py-15">
           {cards.map((item) => (
             <article
               className="relative news-card w-full md:w-75 min-h-[40vh] bg-surface border border-outline/50 shadow-lg rounded-2xl flex flex-col overflow-hidden"
@@ -95,13 +100,16 @@ const newsPage = async ({ searchParams }) => {
                   ea a beatae facilis eaque rem laudantium reiciendis eos
                   recusandae saepe nobis alias necessitatibus!
                 </p>
-                <p className="flex items-center text-sm text-primary gap-1.5 font-semibold">
-                  {" "}
-                  <span>
-                    <Timer size={20} />
-                  </span>{" "}
-                  {spotlight.duration} min read
-                </p>
+                <div className="article-footer text-primary">
+                  <p className="flex items-center gap-1.5 ">
+                    {" "}
+                    <span>
+                      <Timer size={20} />
+                    </span>{" "}
+                    {item.duration} min read
+                  </p>
+                  <Link href={`/news/${item.id}`}>View details</Link>
+                </div>
               </div>
             </article>
           ))}

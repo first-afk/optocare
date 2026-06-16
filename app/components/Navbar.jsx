@@ -1,3 +1,6 @@
+// "use client";
+
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -10,6 +13,13 @@ import {
 import NavItems from "./NavItems";
 
 const Navbar = () => {
+  // const pathname = usePathname();
+
+  // // Hide navbar on admin routes
+  // if (pathname.startsWith("/admin")) {
+  //   return null;
+  // }
+
   return (
     <nav className="navbar bg-surface border-b border-outline/70 shadow-[0_12px_50px_rgba(37,99,235,0.08)] px-6 py-4 sticky top-0 z-40">
       <Link href="/">

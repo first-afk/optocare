@@ -157,7 +157,7 @@ body,
 
 /* Color Utilities */
 .text-primary {
-  color: var(--on-primary);
+  color: var(--on-primary-soft);
 }
 
 .text-secondary {
@@ -207,7 +207,7 @@ body,
 }
 
 .btn-secondary {
-  @apply px-5 py-2.5 rounded-2xl font-semibold cursor-pointer transition-all duration-200 ease-out shadow-sm hover:bg-secondary/95;
+  @apply px-4 py-1 rounded-lg font-semibold cursor-pointer transition-all duration-200 ease-out hover:bg-secondary/50;
   background-color: var(--secondary-soft);
   color: var(--on-secondary-soft);
 }
@@ -233,14 +233,14 @@ body,
 .heading-h3 {
   font-size: clamp(1.5rem, 2.5vw, 2.5rem);
   line-height: 1.05;
-  letter-spacing: -0.05em;
+  /* letter-spacing: -0.05em; */
   font-weight: 600;
   color: var(--foreground);
 }
 .heading-h4 {
-  font-size: clamp(0.8rem, 2vw, 2rem);
+  font-size: clamp(1rem, 2vw, 2rem);
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  /* letter-spacing: -0.01em; */
   font-weight: 600;
   color: var(--foreground);
 }
@@ -248,15 +248,15 @@ body,
 .pill {
   @apply inline-flex items-center rounded-2xl dark:bg-gray-500/10 px-3 py-2 text-sm font-medium dark:text-white inset-ring inset-ring-outline/70 dark:inset-ring-gray-400/20;
 }
-.active {
-  color: var(--on-primary);
-  @apply bg-primary;
-}
 .news-genre-pill {
   background-color: var(--primary-soft);
   color: var(--on-primary-soft);
   font-weight: 600;
   @apply inset-ring-0 w-fit;
+}
+.active {
+  color: var(--on-primary);
+  @apply bg-primary;
 }
 
 .job-card {
@@ -321,6 +321,21 @@ body,
       grid-area: title;
     }
   }
+  .news-section {
+    .news-header {
+      @apply flex flex-col mx-3 justify-center;
+    }
+    .news-spotlight {
+      @apply flex max-md:flex-col min-h-[80vh] w-full mb-10 items-start justify-center max-md:bg-surface  rounded-t-2xl;
+
+      .spotlight-content {
+        @apply flex flex-col p-4 py-5 space-y-5 bg-surface md:border border-outline/70 shadow-lg rounded-2xl md:w-1/3 h-fit;
+      }
+    }
+    .article-footer {
+      @apply flex flex-wrap justify-between items-center font-semibold text-sm;
+    }
+  }
   .listbox {
     @apply h-10 w-full border-b border-b-tertiary;
   }
@@ -338,5 +353,9 @@ body,
   }
   .select__popover {
     @apply rounded-xl bg-neutral-950 p-2 w-full max-w-xs;
+  }
+
+  .breadcrumbs__separator {
+    @apply text-amber-400 font-bold;
   }
 }

@@ -1,7 +1,7 @@
 import { getAllJobs } from "@/lib/actions/jobs.actions";
 import React from "react";
-import SearchInput from "../admin/components/SideSearch";
-import JobCard from "../admin/components/JobCard";
+import SearchInput from "./components/SideSearch";
+import JobCard from "./components/JobCard";
 
 const jobsPage = async ({ searchParams }) => {
   const filters = await searchParams;

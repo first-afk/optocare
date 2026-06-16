@@ -14,13 +14,19 @@ const JobCard = ({ job }) => {
           <span className="inline-flex rounded-full bg-primary/10 py-1 px-2 text-xs font-semibold uppercase tracking-[0.24em] text-primary w-fit">
             {job_type || "Job"}
           </span>
-          <h3 className="text-xl font-semibold text-foreground capitalize">{title}</h3>
+          <h3 className="text-xl font-semibold text-foreground capitalize">
+            {title}
+          </h3>
           <div className="inline-flex items-center gap-2 rounded-full bg-secondary/70 px-3 py-1 text-sm font-medium text-secondary w-fit capitalize">
             {salary_range}
           </div>
         </div>
 
-        <p className="text-sm leading-6 text-slate-600 px-3">{summary}</p>
+        <p className="text-sm leading-6 text-slate-600 px-3">
+          {summary} Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          Iure, quam maiores eius eos veritatis id cumque repellat aut sed ea,
+          dolor eveniet mollitia cum nisi debitis unde vero perspiciatis.
+        </p>
 
         <div className="flex flex-wrap items-center justify-between gap-3 pt-3">
           <span className="rounded-full bg-primary/5 px-3 py-1 text-sm font-medium text-primary capitalize">

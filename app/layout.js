@@ -1,7 +1,7 @@
 import { Inter, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/ui/Navbar";
 import Footer from "./components/Footer";
 import { Toaster } from "sonner";
 
@@ -29,10 +29,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body
-        className="min-h-full grid"
-        suppressHydrationWarning={true}
-      >
+      <body className="min-h-full grid" suppressHydrationWarning={true}>
         <ClerkProvider appearance={{ variables: { colorPrimary: "#00328a" } }}>
           <Navbar />
           {children}

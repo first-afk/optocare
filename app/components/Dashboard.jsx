@@ -1,12 +1,15 @@
 import React from "react";
-import DashboardCard from "./DashboardCard";
+import DashboardCard from "./ui/DashboardCard";
 
 const Dashboard = () => {
   return (
     <section className="relative mt-[50vh] p-5">
       <div className="flex justify-center py-5 mx-3">
         <h1 className="text-pretty text-center py-2 text-xl font-bold capitalize">
-          Your <span className="border-b-2 border-b-secondary"> central </span>  hub for practice management and <span className="border-b-2 border-b-secondary">professional  </span> growth.
+          Your <span className="border-b-2 border-b-secondary"> central </span>{" "}
+          hub for practice management and{" "}
+          <span className="border-b-2 border-b-secondary">professional </span>{" "}
+          growth.
         </h1>
       </div>
 

@@ -358,4 +358,8 @@ body,
   .breadcrumbs__separator {
     @apply text-amber-400 font-bold;
   }
+
+  .dashboard_card {
+    @apply rounded-lg border border-outline/70 shadow-md bg-surface p-3;
+  }
 }

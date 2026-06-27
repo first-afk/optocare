@@ -18,25 +18,26 @@ function Layout({ children }) {
     { path: "/admin", label: "Overview", icon: Library },
     { path: "/admin/news", label: "News Management", icon: NewspaperIcon },
     { path: "/admin/jobs", label: "Job Listings", icon: BriefcaseBusiness },
-    { path: "/admin/settings", label: "Settings", icon: Settings2 },
   ];
 
   return (
     <div className="flex">
       <nav className="hidden lg:flex flex-col w-64 border-r border-outline/70 py-6 transition-colors duration-200">
-        <div className="flex items-center gap-3 mb-8 px-4">
-          <div className="size-10 rounded-xl bg-blue-900 dark:bg-primary flex justify-center items-center">
-            <Eye className="size-6 text-white" />
+        <Link href="/">
+          <div className="flex items-center gap-3 mb-8 px-4">
+            <div className="size-10 rounded-xl bg-blue-900 dark:bg-primary flex justify-center items-center">
+              <Eye className="size-6 text-white" />
+            </div>
+            <div className="flex flex-col text-left gap ">
+              <h1 className="text-lg font-bold tracking-wide text-blue-900 dark:text-white">
+                OptoVision
+              </h1>
+              <p className="text-xs uppercase tracking-widest">
+                Management portal
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col text-left gap ">
-            <h1 className="text-lg font-bold tracking-wide text-blue-900 dark:text-white">
-              OptoVision
-            </h1>
-            <p className="text-xs uppercase tracking-widest">
-              Management portal
-            </p>
-          </div>
-        </div>
+        </Link>
         <div className="flex flex-col gap-3 py-4">
           {navItems.map((item) => {
             const isActive = pathname === item.path;

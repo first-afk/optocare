@@ -63,8 +63,9 @@ const NewsForm = () => {
   return (
     <Form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="flex flex-col gap-4 justify-center items-center w-full max-w-lg space-y-3 rounded-4xl border border-outline/70 bg-surface p-6 shadow-[0_30px_80px_rgba(37,99,235,0.12)] backdrop-blur-xl"
+      className="flex flex-col gap-4 justify-center max-w-full md:w-sm space-y-3 rounded-xl border-2 border-outline/70 bg-surface py-6 px-10 backdrop-blur-xl shadow-lg"
     >
+      <h2 className="heading-h4 capitalize">Add new article</h2>
       <Controller
         name="title"
         control={control}
@@ -74,7 +75,7 @@ const NewsForm = () => {
             name="title"
             type="text"
             id="title"
-            className="text-sm font-medium flex flex-col gap-3 w-full max-w-md"
+            className="text-sm font-medium flex flex-col gap-3 w-full"
           >
             <Label htmlFor="job-title">Article Title</Label>
             <Input
@@ -86,6 +87,7 @@ const NewsForm = () => {
           </TextField>
         )}
       />
+
       <Controller
         name="genre"
         control={control}
@@ -125,7 +127,7 @@ const NewsForm = () => {
         name="content"
         control={control}
         render={({ field }) => (
-          <div className="flex flex-col gap-2 w-full text-sm font-medium  max-w-md">
+          <div className="flex flex-col gap-2 w-full text-sm font-medium">
             <Label htmlFor="content">Content Summary</Label>
             <TextArea
               {...field}
@@ -138,7 +140,6 @@ const NewsForm = () => {
           </div>
         )}
       />
-
       <Controller
         name="duration"
         control={control}
@@ -148,7 +149,7 @@ const NewsForm = () => {
             name="duration"
             type="text"
             id="duration"
-            className="text-sm font-medium flex flex-col gap-3 w-full max-w-md"
+            className="text-sm font-medium flex flex-col gap-3 w-full"
           >
             <Label htmlFor="duration">Estimated Read Time (minutes)</Label>
             <Input
@@ -162,7 +163,7 @@ const NewsForm = () => {
         )}
       />
 
-      <div className="w-full max-w-md">
+      <div className="w-full">
         <Button
           type="submit"
           className="bg-primary p-3 rounded-2xl text-white w-full cursor-pointer shadow-lg shadow-primary/10 hover:bg-primary/95"

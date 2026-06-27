@@ -51,7 +51,10 @@ const page = async () => {
         <div className="dashboard_card w-1/3 max-md:w-3/4 flex flex-col space-y-3 p-3">
           <h1 className="capitalize font-bold mb-8 text-xl">quick actions</h1>
 
-          <Button variant="primary">
+          <Button
+            variant="primary"
+            className="items-center justify-center flex"
+          >
             <Link
               href="/admin/jobs"
               className="inline-flex items-center justify-center capitalize space-x-3"
@@ -60,7 +63,10 @@ const page = async () => {
             </Link>
           </Button>
 
-          <Button variant="secondary">
+          <Button
+            variant="secondary"
+            className="items-center justify-center flex"
+          >
             <Link
               href="/admin/news"
               className="inline-flex capitalize justify-center items-center space-x-3"

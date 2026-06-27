@@ -35,7 +35,7 @@ const DashboardCard = ({
           </div>
           <div className="flex flex-col gap-3 mx-5 py-5">
             <h1 className="text-2xl font-bold capitalize">{topic}</h1>
-            <p className="text-sm font-medium">{description}</p>
+            <p className="text-sm font-medium w-full">{description}</p>
           </div>
           {children}
         </div>

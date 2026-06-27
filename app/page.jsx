@@ -5,8 +5,8 @@ import About from "./components/About";
 
 const page = () => {
   return (
-    <main className="dark:bg-surface">
-      <section className="h-[50vh]">
+    <main className="mx-auto max-w-full">
+      <section>
         <Hero />
       </section>
       <section className="pb-20 pt-20 dark:bg-surface bg-[#ebf3fd] shadow-lg">

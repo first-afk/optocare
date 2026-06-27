@@ -67,52 +67,55 @@ const JobForm = () => {
   return (
     <Form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="flex flex-col gap-4 justify-center items-center w-full max-w-lg space-y-3 rounded-4xl border border-outline/70 bg-surface p-6 shadow-[0_30px_80px_rgba(37,99,235,0.12)] backdrop-blur-xl"
+      className="flex flex-col gap-4 justify-center w-full max-w-full space-y-3 rounded-4xl border-3 border-outline/70 bg-surface py-6 px-10 shadow-[0_30px_80px_rgba(37,99,235,0.12)] backdrop-blur-xl"
     >
-      <Controller
-        name="job"
-        control={control}
-        render={({ field }) => (
-          <TextField
-            isRequired
-            name="job_title"
-            type="text"
-            id="job_title"
-            className="text-sm font-medium flex flex-col gap-3 w-full max-w-md"
-          >
-            <Label htmlFor="job-title">Job Title</Label>
-            <Input
-              className="p-3 rounded-2xl border border-outline/70 dark:bg-surface bg-white/85 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
-              placeholder="What's the job title?"
-              {...field}
-            />
-            <FieldError />
-          </TextField>
-        )}
-      />
-      <Controller
-        name="clinic"
-        control={control}
-        render={({ field }) => (
-          <TextField
-            isRequired
-            name="clinic_name"
-            type="text"
-            id="clinic_name"
-            className="text-sm font-medium flex flex-col gap-3 w-full max-w-md"
-          >
-            <Label htmlFor="job-title">Clinic Name</Label>
-            <Input
-              className="p-3 rounded-2xl border border-outline/70 dark:bg-surface bg-white/85 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
-              placeholder="What's the name of clinic?"
-              {...field}
-            />
-            <FieldError />
-          </TextField>
-        )}
-      />
+      <h2 className="heading-h4">Create new job</h2>
+      <div className="flex max-md:flex-col justify-between w-full gap-4">
+        <Controller
+          name="job"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              isRequired
+              name="job_title"
+              type="text"
+              id="job_title"
+              className="text-sm font-medium flex flex-col gap-3 w-full max-w-md"
+            >
+              <Label htmlFor="job-title">Job Title</Label>
+              <Input
+                className="p-3 rounded-2xl border border-outline/70 dark:bg-surface bg-white/85 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
+                placeholder="What's the job title?"
+                {...field}
+              />
+              <FieldError />
+            </TextField>
+          )}
+        />
+        <Controller
+          name="clinic"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              isRequired
+              name="clinic_name"
+              type="text"
+              id="clinic_name"
+              className="text-sm font-medium flex flex-col gap-3 w-full max-w-md"
+            >
+              <Label htmlFor="job-title">Clinic Name</Label>
+              <Input
+                className="p-3 rounded-2xl border border-outline/70 dark:bg-surface bg-white/85 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
+                placeholder="What's the name of clinic?"
+                {...field}
+              />
+              <FieldError />
+            </TextField>
+          )}
+        />
+      </div>
 
-      <div className="flex justify-between w-full max-w-md gap-4">
+      <div className="flex max-md:flex-col justify-between w-full gap-4">
         <Controller
           name="type"
           control={control}
@@ -185,7 +188,7 @@ const JobForm = () => {
         name="description"
         control={control}
         render={({ field }) => (
-          <div className="flex flex-col gap-2 w-full max-w-md text-sm font-medium">
+          <div className="flex flex-col gap-2 w-full text-sm font-medium">
             <Label htmlFor="job-summary">Job Summary</Label>
             <TextArea
               {...field}
@@ -198,7 +201,7 @@ const JobForm = () => {
           </div>
         )}
       />
-      <div className="w-full max-w-md">
+      <div className="w-full">
         <Button
           type="submit"
           className="bg-primary p-3 rounded-2xl text-white w-full cursor-pointer shadow-lg shadow-primary/10 hover:bg-primary/95"

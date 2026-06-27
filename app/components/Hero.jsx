@@ -15,7 +15,7 @@ const heroItems = [
 const Hero = () => {
   return (
     <section className="hero-section">
-      <div className="image-wrapper relative w-full h-full">
+      <div className="image-wrapper relative w-full h-full max-h-[80vh]">
         <Image
           src="/images/optovision_hero.png"
           alt="hero image"

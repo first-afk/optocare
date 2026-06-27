@@ -119,17 +119,21 @@ function JobListing() {
   };
 
   return (
-    <main className="py-10 px-4 mx-3">
+    <main className="py-10 m-5">
       <div className="flex flex-wrap justify-between items-center gap-3">
-        <div className="job_listing__header w-full lg:w-2/3">
+        <div className="job_listing__header w-full lg:w-2/3 mb-6">
           <h1 className="heading-h3 capitalize">job listings</h1>
-          <p className="text-sm">
+          <p className="text-sm mt-3 font-medium dark:text-slate-300">
             Manage and monitor current open positions across all clinic
             departments
           </p>
         </div>
-        <div className="flex-1 w-full lg:w-1/3">
-          <Button variant="secondary" onClick={() => setShowForm(!showForm)}>
+        <div className="flex-1 w-full lg:w-1/3 transition-colors">
+          <Button
+            variant="secondary"
+            className="items-center justify-center flex"
+            onClick={() => setShowForm(!showForm)}
+          >
             {showForm ? (
               <span className="capitalize inline-flex items-center justify-center space-x-3 w-full">
                 {" "}
@@ -149,8 +153,6 @@ function JobListing() {
 
       {showForm ? (
         <div className="py-10 mb-6 gap-4">
-          <h2 className="heading-h4">Create new job</h2>
-
           <JobForm />
         </div>
       ) : (
@@ -217,11 +219,16 @@ function JobListing() {
                     </tr>
                   ) : (
                     jobs.map((job) => (
-                      <tr key={job.id} className="hover:bg-slate-50">
-                        <td className="py-4 px-3 font-medium text-slate-900 capitalize">
+                      <tr
+                        key={job.id}
+                        className="hover:bg-slate-50 dark:hover:bg-slate-700/10"
+                      >
+                        <td className="py-4 px-3 font-medium text-slate-900 dark:text-slate-400 capitalize">
                           {job.title}
                         </td>
-                        <td className="py-4 px-3">{job.clinic_name}</td>
+                        <td className="py-4 px-3 text-slate-900 dark:text-slate-400">
+                          {job.clinic_name}
+                        </td>
                         <td className="py-4 px-3">
                           <span
                             className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
@@ -233,7 +240,9 @@ function JobListing() {
                             {job.is_active ? "published" : "disabled"}
                           </span>
                         </td>
-                        <td className="py-4 px-3">{formattedDate(job)}</td>
+                        <td className="py-4 px-3 text-slate-900 dark:text-slate-400">
+                          {formattedDate(job)}
+                        </td>
                         <td className="py-4 px-3">
                           <div className="flex items-center gap-2">
                             <button

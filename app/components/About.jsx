@@ -5,7 +5,7 @@ import React from "react";
 const About = () => {
   return (
     <div className="about-section">
-      <div className="relative w-full md:w-1/2 h-full size-10">
+      <div className="relative w-full md:w-1/2 h-full max-h-[80vh]">
         <Image
           src={aboutImage}
           alt="about image"

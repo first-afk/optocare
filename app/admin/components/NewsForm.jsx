@@ -13,7 +13,7 @@ import {
   Button,
 } from "@heroui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
+import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -35,6 +35,7 @@ const genre = [
 ];
 
 const NewsForm = () => {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { handleSubmit, control } = useForm({
     resolver: zodResolver(formSchema),
@@ -46,23 +47,30 @@ const NewsForm = () => {
     },
   });
   const onSubmit = async (values) => {
-    const news = await createNewsArticle(values);
-    if (news) {
-      toast.success("News article has been created!");
-      router.push(`/news/${news.id}`);
-    } else {
-      router.push("/");
+    try {
+      const news = await createNewsArticle(values);
+      if (news) {
+        const handleRoute = () => router.push(`/news/${news.id}`);
+        toast.success("News article has been created!", {
+          action: {
+            label: `View published article`,
+            onClick: handleRoute,
+          },
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occured while publishing article", {
+        error: error,
+      });
+    } finally {
+      setLoading(false);
     }
-  };
-  const onError = (errors) => {
-    toast.error("An error occured", {
-      error: errors,
-    });
   };
 
   return (
     <Form
-      onSubmit={handleSubmit(onSubmit, onError)}
+      onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-4 justify-center max-w-full md:w-sm space-y-3 rounded-xl border-2 border-outline/70 bg-surface py-6 px-10 backdrop-blur-xl shadow-lg"
     >
       <h2 className="heading-h4 capitalize">Add new article</h2>
@@ -168,7 +176,7 @@ const NewsForm = () => {
           type="submit"
           className="bg-primary p-3 rounded-2xl text-white w-full cursor-pointer shadow-lg shadow-primary/10 hover:bg-primary/95"
         >
-          Publish Article
+          {loading ? "Publishing ..." : "Publish Article"}
         </Button>
       </div>
     </Form>

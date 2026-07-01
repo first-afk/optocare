@@ -38,6 +38,7 @@ const salaryRange = [
 ];
 
 const JobForm = () => {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { handleSubmit, control } = useForm({
     resolver: zodResolver(formSchema),
@@ -50,23 +51,31 @@ const JobForm = () => {
     },
   });
   const onSubmit = async (values) => {
-    const job = await createJob(values);
-    if (job) {
-      toast.success("Job has been created!");
-      router.push(`/jobs/${job.id}`);
-    } else {
-      router.push("/");
+    setLoading(true);
+    try {
+      const job = await createJob(values);
+      if (job) {
+        const handleRoute = () => router.push(`/jobs/${job.id}`);
+        toast.success("Job has been created!", {
+          action: {
+            label: `View new posted Job`,
+            onClick: handleRoute,
+          },
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occured while creating job", {
+        error: error,
+      });
+    } finally {
+      setLoading(false);
     }
-  };
-  const onError = (errors) => {
-    toast.error("An error occured", {
-      error: errors,
-    });
   };
 
   return (
     <Form
-      onSubmit={handleSubmit(onSubmit, onError)}
+      onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-4 justify-center w-full max-w-full space-y-3 rounded-4xl border-3 border-outline/70 bg-surface py-6 px-10 shadow-[0_30px_80px_rgba(37,99,235,0.12)] backdrop-blur-xl"
     >
       <h2 className="heading-h4">Create new job</h2>
@@ -206,7 +215,7 @@ const JobForm = () => {
           type="submit"
           className="bg-primary p-3 rounded-2xl text-white w-full cursor-pointer shadow-lg shadow-primary/10 hover:bg-primary/95"
         >
-          Submit
+          {loading ? "Submitting ..." : "Submit"}
         </Button>
       </div>
     </Form>

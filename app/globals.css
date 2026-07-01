@@ -148,7 +148,6 @@ body,
 #__next {
   width: 100%;
   height: 100%;
-  max-width: 1200px;
 }
 
 /* =====================================================
@@ -271,10 +270,10 @@ body,
 
 @layer components {
   .navbar {
-    @apply flex items-center justify-between mx-auto w-full px-14 py-4 max-sm:px-4;
+    @apply flex items-center justify-between mx-auto w-full px-14 py-4 max-sm:px-4 shadow-[0_12px_50px_rgba(37,99,235,0.08)] relative bg-surface border-b border-outline/70 md:sticky top-0 z-40;
   }
   .hero-section {
-    @apply grid w-full;
+    @apply grid w-full h-full;
 
     .image-wrapper {
       grid-area: 1/1;
@@ -286,7 +285,7 @@ body,
     }
   }
   .about-section {
-    @apply w-full h-screen p-5 mx-auto md:mx-3 flex flex-col md:flex-row justify-between gap-10;
+    @apply w-full h-full p-5 mx-auto md:mx-3 flex flex-col md:flex-row justify-between gap-10;
   }
   .job-section {
     display: grid;
@@ -294,6 +293,7 @@ body,
       "filter title"
       "filter job-grid";
     grid-template-columns: 300px 1fr;
+    grid-template-rows: auto auto;
     padding: 1rem 2rem;
     gap: 2rem;
 

@@ -2,8 +2,16 @@ import { getAllJobs } from "@/lib/actions/jobs.actions";
 import React from "react";
 import SearchInput from "./components/SideSearch";
 import JobCard from "./components/JobCard";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 const jobsPage = async ({ searchParams }) => {
+  const { userId } = await auth();
+
+  if (!userId) {
+    redirect("/");
+  }
+
   const filters = await searchParams;
   const title = filters.title ? filters.title : "";
   const clinic_name = filters.clinic_name ? filters.clinic_name : "";

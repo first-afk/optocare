@@ -4,6 +4,7 @@ import NewsForm from "../components/NewsForm";
 import { Pencil, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { toast } from "sonner";
 
 const NEWS_PER_PAGE = 5;
 
@@ -30,6 +31,9 @@ const NewsAdminPage = () => {
       setTotal(data.total || 0);
     } catch (err) {
       console.error(err);
+      toast.error("An error occured", {
+        error: err,
+      });
     } finally {
       setLoading(false);
     }

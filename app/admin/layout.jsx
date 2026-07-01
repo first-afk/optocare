@@ -21,7 +21,7 @@ function Layout({ children }) {
   ];
 
   return (
-    <div className="flex">
+    <div className="flex max-w-300">
       <nav className="hidden lg:flex flex-col w-64 border-r border-outline/70 py-6 transition-colors duration-200">
         <Link href="/">
           <div className="flex items-center gap-3 mb-8 px-4">

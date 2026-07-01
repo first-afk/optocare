@@ -8,7 +8,7 @@ const JobCard = ({ job }) => {
       : description;
 
   return (
-    <article className="relative job-card rounded-4xl border border-outline/70 bg-surface shadow-[0_10px_30px_rgba(37,99,235,0.12)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <article className="relative job-card rounded-4xl border border-outline/70 bg-surface shadow-[0_10px_30px_rgba(37,99,235,0.12)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl max-h-100">
       <div className="flex flex-col gap-4 p-5 sm:p-6">
         <div className="flex flex-col gap-2 px-3">
           <span className="inline-flex rounded-full bg-primary/10 py-1 px-2 text-xs font-semibold uppercase tracking-[0.24em] text-primary w-fit">

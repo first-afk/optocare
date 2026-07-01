@@ -36,7 +36,7 @@ const newsPage = async ({ searchParams }) => {
       <div className="news-body mx-3 mt-5">
         {spotlight ? (
           <article className="news-spotlight">
-            <div className="relative md:w-2/3 w-full min-h-[80vh] flex justify-stretch">
+            <div className="relative md:w-2/3 w-full h-[500px] flex justify-stretch">
               <Image
                 src="/images/optovision_hero.png"
                 alt=""

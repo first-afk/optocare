@@ -10,6 +10,7 @@ const jobsPage = async ({ searchParams }) => {
 
   if (!userId) {
     redirect("/");
+    // create a page that non authorised users will stop at and theyll be asked to login first
   }
 
   const filters = await searchParams;

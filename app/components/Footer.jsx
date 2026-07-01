@@ -15,7 +15,7 @@ const Footer = () => {
     <NavbarClient>
       <footer
         aria-label="footer"
-        className="shadow-tertiary shadow-2xl flex md:flex-row md:justify-between md:items-start flex-col-reverse items-center text-xs capitalize gap-5 p-10 bg-surface"
+        className="shadow-tertiary relative shadow-2xl flex md:flex-row md:justify-between md:items-start flex-col-reverse items-center text-xs capitalize gap-5 p-10 bg-surface mb-0"
       >
         <div className="flex flex-row gap-3 items-center">
           <Link href="/">

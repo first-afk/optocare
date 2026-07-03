@@ -16,7 +16,7 @@ const jobsPage = async ({ searchParams }) => {
         <div className="job_skeleton__container">
           <JobLoading />
         </div>
-        <div className="job_skeleton__text absolute top-52 left-[40%] flex flex-col items-center justify-center">
+        <div className="job_skeleton__text absolute top-52 md:left-[40%] left-18 flex flex-col items-center justify-center">
           <p className=" font-medium text-sm ">
             Oops, seems you&apos;re not logged in yet.
           </p>
@@ -46,7 +46,7 @@ const jobsPage = async ({ searchParams }) => {
   return (
     <section className="relative job-section">
       <div className="title heading-h2">Job Library</div>
-      <aside className="filter min-h-screen">
+      <aside className="filter">
         <SearchInput />
       </aside>
       <div className="job-grid">

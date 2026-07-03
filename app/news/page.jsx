@@ -24,10 +24,7 @@ const newsPage = async ({ searchParams }) => {
         <h1 className="heading-h1 px-2 py-4">Industry Insights</h1>
         <p className="text-sm px-2 mb-4 leading-loose">
           The latest advancements, clinical studies, and practice management
-          strategies for eye care professionals. Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Asperiores sunt, fugiat optio, dolor
-          quos doloremque qui aliquid excepturi, sint nam sit ea incidunt
-          accusamus impedit eaque unde consequuntur tempore placeat!
+          strategies for eye care professionals.
         </p>
         <div className="news-pills py-5">
           <NewsCategory genres={allGenres} activeGenre={genre} />
@@ -36,7 +33,7 @@ const newsPage = async ({ searchParams }) => {
       <div className="news-body mx-3 mt-5">
         {spotlight ? (
           <article className="news-spotlight">
-            <div className="relative md:w-2/3 w-full h-[500px] flex justify-stretch">
+            <div className="relative md:w-2/3 w-full h-125 flex justify-stretch">
               <Image
                 src="/images/optovision_hero.png"
                 alt=""
@@ -49,14 +46,7 @@ const newsPage = async ({ searchParams }) => {
             <div className="spotlight-content">
               <p className="news-genre-pill pill">{spotlight.genre}</p>
               <h2 className="heading-h3">{spotlight.title}</h2>
-              <p className="max-md:line-clamp-2 text-sm">
-                {spotlight.content} Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Necessitatibus, quaerat temporibus! Corporis
-                nobis voluptate provident sint consequatur impedit laboriosam
-                aut optio dolores voluptatibus nulla possimus veniam doloremque
-                officiis, cum nam. Lorem ipsum dolor sit, amet consectetur
-                adipisicing elit.
-              </p>
+              <p className="max-md:line-clamp-2 text-sm">{spotlight.content}</p>
               <div className="article-footer text-primary">
                 <p className="flex items-center gap-1.5">
                   {" "}

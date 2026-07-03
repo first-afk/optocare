@@ -13,14 +13,16 @@ const page = async ({ params }) => {
   return (
     <main className="mx-3 p-3 relative">
       <div className="breadcrumb py-5">
-        <Breadcrumbs className="inline-flex items-center gap-2 text-sm font-semibold flex-nowrap">
+        <Breadcrumbs className="inline-flex items-center gap-2 text-sm font-semibold w-full">
           <Breadcrumbs.Item
             href="/news"
-            className="inline-flex items-center hover:underline hover:underline-offset-8 hover:decoration-secondary gap-2"
+            className="flex items-center hover:underline hover:underline-offset-8 hover:decoration-secondary gap-2 w-fit"
           >
-            Industry News
+            News
           </Breadcrumbs.Item>
-          <Breadcrumbs.Item>{title}</Breadcrumbs.Item>
+          <Breadcrumbs.Item className="line-clamp-1 w-fit">
+            {title}
+          </Breadcrumbs.Item>
         </Breadcrumbs>
       </div>
       <header className="relative mb-8 rounded-lg overflow-hidden shadow-md min-h-[80vh] w-full">
@@ -42,8 +44,6 @@ const page = async ({ params }) => {
               {title}
             </h1>
             <div className="mt-2 text-sm opacity-90  inline-flex flex-wrap">
-              <span>By {posted_by || "Unknown"}</span>
-              <span className="mx-2">•</span>
               <span>
                 {created_at ? new Date(created_at).toLocaleDateString() : ""}
               </span>
@@ -61,7 +61,7 @@ const page = async ({ params }) => {
         </div>
       </header>
 
-      <article className="prose max-w-none">
+      <article className="prose max-w-none bg-surface rounded-2xl min-h-80 p-4 border border-outline/70 shadow-lg">
         {content ? (
           <div dangerouslySetInnerHTML={{ __html: content }} />
         ) : (

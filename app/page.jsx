@@ -9,7 +9,7 @@ const page = () => {
       <section>
         <Hero />
       </section>
-      <section className="pb-20 pt-20 dark:bg-surface bg-[#ebf3fd] shadow-lg">
+      <section className="pb-20 pt-20 dark:bg-surface bg-[#edf2fa] drop-shadow-sm">
         <Dashboard />
       </section>
       <section className="pb-20 pt-20">

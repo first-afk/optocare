@@ -4,12 +4,35 @@ import SearchInput from "./components/SideSearch";
 import JobCard from "./components/JobCard";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { JobLoading } from "../components/ui/Loading";
+import Link from "next/link";
 
 const jobsPage = async ({ searchParams }) => {
   const { userId } = await auth();
 
   if (!userId) {
-    redirect("/");
+    return (
+      <div className="job_skeleton relative">
+        <div className="job_skeleton__container">
+          <JobLoading />
+        </div>
+        <div className="job_skeleton__text absolute top-52 left-[40%] flex flex-col items-center justify-center">
+          <p className=" font-medium text-sm ">
+            Oops, seems you&apos;re not logged in yet.
+          </p>
+          <span>
+            <Link
+              className="text-secondary font-bold underline"
+              href="./sign-in"
+            >
+              {" "}
+              Sign up
+            </Link>{" "}
+            to view jobs
+          </span>
+        </div>
+      </div>
+    );
     // create a page that non authorised users will stop at and theyll be asked to login first
   }
 
@@ -23,7 +46,7 @@ const jobsPage = async ({ searchParams }) => {
   return (
     <section className="relative job-section">
       <div className="title heading-h2">Job Library</div>
-      <aside className="filter">
+      <aside className="filter min-h-screen">
         <SearchInput />
       </aside>
       <div className="job-grid">

@@ -2,6 +2,7 @@ import React from "react";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import OverviewCard from "./components/OverviewCard";
+import RecentActivities from "./components/RecentActivities";
 import {
   ChevronRight,
   Megaphone,
@@ -10,44 +11,88 @@ import {
 } from "lucide-react";
 import Button from "../components/ui/Button";
 import Link from "next/link";
+import {
+  getJobsCountThisMonth,
+  getRecentActivities,
+} from "@/lib/actions/jobs.actions";
+import {
+  getNewsCountThisMonth,
+  getRecentNewsActivities,
+} from "@/lib/actions/news.actions";
 
 const page = async () => {
   const user = await currentUser();
   if (user?.publicMetadata.role !== "admin") {
     redirect("/");
   }
+
+  let jobsCount = 0,
+    newsCount = 0,
+    totalPosts = 0,
+    recentActivities = [];
+
+  try {
+    jobsCount = await getJobsCountThisMonth();
+    newsCount = await getNewsCountThisMonth();
+    totalPosts = jobsCount + newsCount;
+
+    const recentJobs = await getRecentActivities({ limit: 5 });
+    const recentNews = await getRecentNewsActivities({ limit: 5 });
+
+    // Combine and sort by date
+    recentActivities = [
+      ...recentJobs.map((job) => ({
+        ...job,
+        type: "job",
+      })),
+      ...recentNews.map((news) => ({
+        ...news,
+        type: "news",
+      })),
+    ].sort(
+      (a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+    );
+  } catch (error) {
+    console.error("Error fetching admin data:", error);
+  }
   return (
     <div className="mx-5 py-10 px-4 space-y-12">
-      <div className="flex flex-col md:flex-row items-center justify-center gap-2 w-full">
+      <div className="w-full lg:w-2/3 mb-6">
+        <h1 className="heading-h3 capitalize">Admin overview</h1>
+        <p className="text-sm mt-3 font-medium dark:text-slate-300">
+          Manage and monitor current open positions across clinic departments
+          and news articles
+        </p>
+      </div>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-2 w-full overviews">
         <OverviewCard
           title="total new posts"
-          insight="+12% this month"
+          insight={`+${totalPosts}% this month`}
           variant="primary"
           icon="overview"
-        ></OverviewCard>
+        >
+          {totalPosts}
+        </OverviewCard>
         <OverviewCard
           title="active job listings"
-          insight="+2 jobs this week"
+          insight={`+${jobsCount} jobs this week`}
           variant="secondary"
           icon="jobs"
-        ></OverviewCard>
+        >
+          {jobsCount}
+        </OverviewCard>
         <OverviewCard
           title="Active article listings"
-          insight="+4 articles this week"
+          insight={`+${newsCount} articles this week`}
           variant="tertiary"
           icon="articles"
-        ></OverviewCard>
+        >
+          {newsCount}
+        </OverviewCard>
       </div>
       <div className="flex md:flex-row flex-col gap-8 items-start">
-        <div className="dashboard_card md:w-2/3 w-full flex-1">
-          <div className="flex justify-between">
-            <h1 className="capitalize font-bold text-xl">recent activity</h1>
-            <p className="text-primary text-sm font-semibold tracking-wide">
-              View All History
-            </p>
-          </div>
-          <div className="recent_activities"></div>
-        </div>
+        <RecentActivities initialActivities={recentActivities} />
         <div className="dashboard_card w-1/3 max-md:w-3/4 flex flex-col space-y-3 p-3">
           <h1 className="capitalize font-bold mb-8 text-xl">quick actions</h1>
 

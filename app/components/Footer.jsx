@@ -15,9 +15,9 @@ const Footer = () => {
     <NavbarClient>
       <footer
         aria-label="footer"
-        className="shadow-tertiary relative shadow-2xl flex md:flex-row md:justify-between md:items-start flex-col-reverse items-center text-xs capitalize gap-5 p-10 bg-surface mb-0"
+        className="shadow-tertiary relative shadow-2xl flex flex-row justify-around items-start text-xs capitalize gap-5 p-10 bg-surface mb-0"
       >
-        <div className="flex flex-row gap-3 items-center">
+        <div className="flex flex-col lg:flex-row gap-3 lg:items-center w-1/2">
           <Link href="/">
             <div className="flex items-center gap-2.5 cursor-pointer">
               <Image
@@ -31,15 +31,14 @@ const Footer = () => {
 
           <p>&#169;2026 OptoVision Clinical Excellence. All rights reserved</p>
         </div>
-        <div>
-          <nav className="flex items-center md:gap-5 gap-2">
-            {footerItems.map(({ label, href }) => (
-              <Link className="" href={href} key={label}>
-                {label}
-              </Link>
-            ))}
-          </nav>
-        </div>
+
+        <nav className="flex lg:flex-row flex-col lg:items-center lg:gap-5 gap-2">
+          {footerItems.map(({ label, href }) => (
+            <Link className="" href={href} key={label}>
+              {label}
+            </Link>
+          ))}
+        </nav>
       </footer>
     </NavbarClient>
   );

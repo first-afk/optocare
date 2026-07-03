@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const JobFilter = () => {
-  const filters = ["all", "full time", "hybrid", "part time", "remote", "new"];
+  const filters = ["all", "full time", "hybrid", "part time", "remote"];
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get("job_type") || "";
@@ -44,7 +44,7 @@ const JobFilter = () => {
               value={filter}
               onClick={() => setSubject(filter)}
               className={clsx(
-                "px-4 py-2 transition-colors ",
+                "px-4 py-2 min-w-20 flex items-center justify-center capitalize transition-colors ",
                 isActive ? "pill active" : "pill",
               )}
             >

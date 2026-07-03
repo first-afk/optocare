@@ -11,9 +11,9 @@ const DashboardCard = ({
   children,
 }) => {
   const variantColors = {
-    primary: "#dbeafe",
-    secondary: "#fef3c7",
-    tertiary: "#e2e8f0",
+    primary: "#ccdbfd",
+    secondary: "#ffd380",
+    tertiary: "#646f77",
   };
 
   return (

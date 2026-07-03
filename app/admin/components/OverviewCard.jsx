@@ -32,9 +32,7 @@ const OverviewCard = ({
       </div>
       <div className="flex flex-col">
         <h1 className="uppercase text-xs text-gray-500">{title}</h1>
-        <p className="font-bold text-lg tracking-wider">
-          {children ? children : "----"}
-        </p>
+        <p className="font-bold text-lg tracking-wider">{children}</p>
       </div>
     </div>
   );

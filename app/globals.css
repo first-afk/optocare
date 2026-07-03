@@ -363,4 +363,14 @@ body,
   .dashboard_card {
     @apply rounded-lg border border-outline/70 shadow-md bg-surface p-3;
   }
+
+  .job_skeleton {
+    display: grid;
+    .job_skeleton__container {
+      grid-area: 1/1;
+    }
+    .job_skeleton__text {
+      grid-area: 1/1;
+    }
+  }
 }

@@ -12,7 +12,7 @@ export function Loading({ className, ...props }) {
 
 export function JobLoading({ className }) {
   return (
-    <div className={`border-outline/80  job-section p-10 ${className}`}>
+    <div className={`border-outline/80 job-section p-10 ${className}`}>
       <Loading className="title h-24 w-full rounded-2xl" />
       <Loading className="filter min-h-screen rounded-2xl" />
       <div className="job-grid">

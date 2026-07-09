@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "OptoVision",
+  title: "OptoNews",
   description:
     "A dedicated career and information portal for the optometry community",
 };
@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
       >
         <ClerkProvider appearance={{ variables: { colorPrimary: "#00328a" } }}>
           <NextTopLoader
-            color="#00328a" // Change this hex code to match your brand color!
+            color="#00328a"
             initialPosition={0.08}
             crawlSpeed={200}
             height={3}

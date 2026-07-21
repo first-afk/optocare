@@ -21,7 +21,6 @@ import z from "zod";
 
 const formSchema = z.object({
   title: z.string().min(1, { error: "Article title is required" }),
-
   content: z.string().min(1, { error: "Article content is required" }),
   genre: z.string().min(1, { error: "Article category is required" }),
   duration: z.coerce.number().min(1, { error: "Duration is required" }),
@@ -37,17 +36,18 @@ const genre = [
 const NewsForm = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control, reset } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
       content: "",
       genre: "",
-      time: 15,
+      duration: 15,
     },
   });
   const onSubmit = async (values) => {
     try {
+      setLoading(true);
       const news = await createNewsArticle(values);
       if (news) {
         const handleRoute = () => router.push(`/news/${news.id}`);
@@ -64,6 +64,12 @@ const NewsForm = () => {
         error: error,
       });
     } finally {
+      reset({
+        title: "",
+        content: "",
+        genre: "",
+        duration: 15,
+      });
       setLoading(false);
     }
   };

@@ -19,6 +19,7 @@ const Dashboard = () => {
           description="Access listings for clinical positions, specialised fellowships, and practice partnership opportunities nationwide"
           variant="primary"
           icon="job"
+          link="/jobs"
           className="max-w-full lg:w-1/2 lg:grow"
         />
         <DashboardCard
@@ -26,6 +27,7 @@ const Dashboard = () => {
           description="FDA approves new revolutionary treatment for advanced macular degeneration"
           variant="secondary"
           icon="news"
+          link="/news"
           className="w-full lg:w-1/3"
         />
 

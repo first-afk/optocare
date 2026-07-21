@@ -17,6 +17,7 @@ import {
 import { Controller, useForm } from "react-hook-form";
 import { createJob } from "@/lib/actions/jobs.actions";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const formSchema = z.object({
   job: z.string().min(1, { error: "Job title is required" }),
@@ -40,7 +41,7 @@ const salaryRange = [
 const JobForm = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control, reset } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       job: "",
@@ -69,6 +70,13 @@ const JobForm = () => {
         error: error,
       });
     } finally {
+      reset({
+        job: "",
+        clinic: "",
+        description: "",
+        type: "",
+        range: "",
+      });
       setLoading(false);
     }
   };

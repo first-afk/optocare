@@ -46,7 +46,7 @@ const page = async ({ params }) => {
       <header className="mb-8 rounded-lg border border-gray-200 p-6 bg-surface shadow-sm">
         <div className="flex items-start justify-between gap-4 max-md:flex-col">
           <div className="flex-1">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-2">{title}</h1>
+            <h1 className="heading-h3 mb-2">{title}</h1>
             <div className="flex items-center gap-2 mb-4 text-lg font-medium text-gray-700 dark:text-slate-400">
               <MapPin size={20} />
               <span>{clinic_name}</span>
@@ -65,7 +65,7 @@ const page = async ({ params }) => {
 
               {salary_range && (
                 <div className="flex items-center gap-2">
-                  <div className="w-9 h-9 bg-amber-400/20 dark:bg-secondary flex items-center justify-center rounded-xl">
+                  <div className="w-9 h-9 bg-yellow-300/20 dark:bg-secondary flex items-center justify-center rounded-xl">
                     <Banknote size={18} className="text-secondary" />
                   </div>
                   <div>
@@ -76,7 +76,7 @@ const page = async ({ params }) => {
               )}
 
               <div className="flex items-center gap-2">
-                <div className="w-9 h-9 bg-tertiary/40 dark:bg-tertiary flex items-center justify-center rounded-xl">
+                <div className="w-9 h-9 bg-slate-300/40 dark:bg-tertiary flex items-center justify-center rounded-xl">
                   <Calendar size={18} className="text-slate-900" />
                 </div>
                 <div>

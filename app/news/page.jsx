@@ -4,6 +4,7 @@ import NewsCategory from "./components/NewsCategory";
 import Image from "next/image";
 import { Timer } from "lucide-react";
 import Link from "next/link";
+import { toast } from "sonner";
 
 const newsPage = async ({ searchParams }) => {
   const filters = await searchParams;
@@ -14,6 +15,13 @@ const newsPage = async ({ searchParams }) => {
     getUniqueGenre(),
     getAllNews({ title: title, genre: genre }),
   ]);
+
+  if (news.message && news.status === "error") {
+    toast.error(news.message);
+  }
+  if (allGenres.message && allGenres.status === "error") {
+    toast.error(allGenres.message);
+  }
 
   const spotlight = news.length > 0 ? news[0] : null;
   const cards = news.length > 1 ? news.slice(1) : [];
@@ -44,10 +52,10 @@ const newsPage = async ({ searchParams }) => {
               />
             </div>
             <div className="spotlight-content">
-              <p className="news-genre-pill pill">{spotlight.genre}</p>
+              <p className="pill active w-fit capitalize">{spotlight.genre}</p>
               <h2 className="heading-h3">{spotlight.title}</h2>
               <p className="max-md:line-clamp-2 text-sm">{spotlight.content}</p>
-              <div className="article-footer text-primary">
+              <div className="article-footer">
                 <p className="flex items-center gap-1.5">
                   {" "}
                   <span>
@@ -65,10 +73,10 @@ const newsPage = async ({ searchParams }) => {
           </article>
         )}
 
-        <div className="news-cards flex flex-row flex-wrap gap-5 md:flex-col max-md:justify-center py-15">
+        <div className="news-cards grid md:grid-cols-3 grid-cols-1 items-center gap-5 max-md:flex-col justify-center py-15">
           {cards.map((item) => (
             <article
-              className="relative news-card w-full md:w-75 min-h-[40vh] bg-surface border border-outline/50 shadow-lg rounded-2xl flex flex-col overflow-hidden"
+              className="relative news-card w-full min-h-[40vh] bg-surface border border-outline/50 shadow-lg rounded-2xl flex flex-col overflow-hidden mb-auto"
               key={item.id ?? item.title}
             >
               <div className="relative w-full h-45">
@@ -82,15 +90,15 @@ const newsPage = async ({ searchParams }) => {
                 />
               </div>
               <div className="p-5 flex-1 flex flex-col gap-3">
-                <p className="news-genre-pill pill">{item.genre}</p>
-                <h3 className="heading-h4">{item.title}</h3>
+                <p className="pill active w-fit capitalize">{item.genre}</p>
+                <h3 className="heading-h4 line-clamp-1">{item.title}</h3>
                 <p className="text-sm leading-relaxed line-clamp-2 max-md:hidden">
                   {item.content} Lorem ipsum dolor sit amet consectetur
                   adipisicing elit. Eum id debitis vel ipsa autem explicabo, ex
                   ea a beatae facilis eaque rem laudantium reiciendis eos
                   recusandae saepe nobis alias necessitatibus!
                 </p>
-                <div className="article-footer text-primary">
+                <div className="article-footer">
                   <p className="flex items-center gap-1.5 ">
                     {" "}
                     <span>

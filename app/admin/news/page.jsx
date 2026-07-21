@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { toast } from "sonner";
 
-const NEWS_PER_PAGE = 5;
+const NEWS_PER_PAGE = 3;
 
 const miniCards = [
   { title: "published", number: "--", color: "#EDF5FF", text: "#0c3491" },
@@ -145,12 +145,7 @@ const NewsAdminPage = () => {
                         {article.content?.slice(0, 140) || "—"}
                       </p>
                       <div className="text-xs text-slate-500 mt-3">
-                        {new Date(
-                          article.created_at ||
-                            article.inserted_at ||
-                            article.published_at ||
-                            article.posted_at,
-                        ).toLocaleDateString()}
+                        {new Date(article.created_at).toLocaleDateString()}
                       </div>
                     </div>
                   </div>

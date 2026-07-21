@@ -47,7 +47,7 @@ const RecentActivities = ({ initialActivities }) => {
               className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
             >
               <div className="flex items-center gap-4 flex-1">
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                   {activity.type === "job" ? (
                     <Briefcase className="w-5 h-5 text-blue-600" />
                   ) : (
@@ -65,7 +65,7 @@ const RecentActivities = ({ initialActivities }) => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400 flex-shrink-0">
+              <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-400 shrink-0">
                 <Calendar className="w-4 h-4" />
                 <span>{formatDate(activity.created_at)}</span>
               </div>

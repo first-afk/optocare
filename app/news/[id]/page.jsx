@@ -7,9 +7,11 @@ import React from "react";
 
 const page = async ({ params }) => {
   const { id } = await params;
-  const { title, genre, content, duration, posted_by, created_at } =
-    await getNews(id);
-  const user = await currentUser();
+  const news = await getNews(id);
+  if (news.message && news.status === "error") {
+    toast.error(news.message);
+  }
+  const { title, genre, content, duration, posted_by, created_at } = news;
   return (
     <main className="mx-3 p-3 relative">
       <div className="breadcrumb py-5">

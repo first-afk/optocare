@@ -50,9 +50,9 @@ const Navbar = () => {
         </div>
 
         {isOpen ? (
-          <div className="md:hidden absolute w-full left-0 right-0 top-0 mt-18 rounded-3xl border border-outline/70 bg-surface p-4 shadow-lg transition-colors">
+          <div className="md:hidden absolute w-full inset-0 h-fit mt-18 rounded-b-3xl border border-outline/70 bg-surface p-4 shadow-lg transition-colors">
             <NavItems className="flex flex-col gap-3" />
-            <div className="mt-4 flex flex-col gap-3">
+            <div className="mt-4 flex gap-3">
               <Show when="signed-out">
                 <SignInButton className="btn-secondary w-full" />
               </Show>

@@ -2,7 +2,6 @@ import { getJob } from "@/lib/actions/jobs.actions";
 import { currentUser } from "@clerk/nextjs/server";
 import { Breadcrumbs } from "@heroui/react";
 import { Briefcase, MapPin, Calendar, Banknote } from "lucide-react";
-import ApplyButton from "../components/ApplyButton";
 import ApplyPage from "../components/ApplyPage";
 
 const Page = async ({ params }) => {

@@ -2,6 +2,8 @@
 import Button from "@/app/components/ui/Button";
 import { Banknote, Briefcase, Calendar, MapPin, X } from "lucide-react";
 import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import rehypeSanitize from "rehype-sanitize";
 import ApplicationForm from "./ApplicationForm";
 
 const ApplyPage = ({
@@ -97,9 +99,11 @@ const ApplyPage = ({
       ) : (
         <article className="bg-surface rounded-lg border border-gray-200 p-6">
           <h2 className="text-xl font-bold mb-4">Job Description</h2>
-          <div className="prose prose-sm max-w-none text-gray-700 dark:text-slate-300 leading-relaxed">
+          <div className="prose max-w-none dark:prose-invert text-gray-700 dark:text-slate-300 leading-relaxed">
             {description ? (
-              <div dangerouslySetInnerHTML={{ __html: description }} />
+              <ReactMarkdown rehypePlugins={[rehypeSanitize]}>
+                {description}
+              </ReactMarkdown>
             ) : (
               <p>No description available for this job posting.</p>
             )}

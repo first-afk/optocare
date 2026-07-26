@@ -138,7 +138,7 @@ function JobListing() {
               <span className="capitalize inline-flex items-center justify-center space-x-3 w-full">
                 {" "}
                 <MoveLeft />
-                <p>cancel</p>
+                <p>Go Back</p>
               </span>
             ) : (
               <span className="capitalize inline-flex items-center justify-center space-x-3 w-full">

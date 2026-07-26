@@ -18,6 +18,7 @@ import { Controller, useForm } from "react-hook-form";
 import { createJob } from "@/lib/actions/jobs.actions";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import MDEditor from "@uiw/react-md-editor";
 
 const formSchema = z.object({
   job: z.string().min(1, { error: "Job title is required" }),
@@ -207,14 +208,29 @@ const JobForm = () => {
         render={({ field }) => (
           <div className="flex flex-col gap-2 w-full text-sm font-medium">
             <Label htmlFor="job-summary">Job Summary</Label>
-            <TextArea
+            <MDEditor
+              {...field}
+              id="job-summary"
+              preview="edit"
+              height={250}
+              style={{
+                borderRadius: 20,
+                overflow: "hidden",
+                backgroundColor: "#000b1ee2",
+              }}
+              textareaProps={{
+                placeholder: "What's the job about?",
+              }}
+              previewOptions={{ disallowedElements: ["style"] }}
+            />
+            {/* <TextArea
               {...field}
               id="job-summary"
               className="rounded-3xl border border-outline/70 dark:bg-surface bg-white/90 px-4 py-4 text-sm leading-6 shadow-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
               placeholder="What's the job about?"
               rows={5}
               style={{ resize: "vertical" }}
-            />
+            /> */}
           </div>
         )}
       />

@@ -1,5 +1,6 @@
-import { HousePlus } from "lucide-react";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import rehypeSanitize from "rehype-sanitize";
 
 const JobCard = ({ job }) => {
   const { id, title, clinic_name, description, job_type, salary_range } = job;
@@ -21,8 +22,10 @@ const JobCard = ({ job }) => {
           <div className="pill active w-fit">{salary_range}</div>
         </div>
 
-        <p className="text-slate-900 font-medium dark:text-slate-50 px-3 first-letter:capitalize">
-          {summary}
+        <p className="text-slate-900 font-medium dark:text-slate-50 px-3 first-letter:capitalize prose dark:prose-invert">
+          <ReactMarkdown rehypePlugins={[rehypeSanitize]}>
+            {summary}
+          </ReactMarkdown>
         </p>
 
         <div className="flex flex-wrap items-center justify-between gap-3 pt-3 px-3">
